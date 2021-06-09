@@ -22,6 +22,9 @@
             </div>
             <hr/>
             {% for item in cart.items %}
+              {% if item.product.handle == "wavell-care" %}
+                {% assign wavellCare = true %}
+              {% endif %}
               <div class="row cart-line">
                 <div class="col-12 col-lg-6">
                   <a class="align-items-vertical justify-content-start cart-information" href="{{ item.url | within: collections.all }}">
@@ -83,6 +86,22 @@
                 {% section 'cart-additional-sale' %}
               </div>
             </div>
+            <div class="row terms">
+              <p>
+                <input class="plus-minus" style="float:none; vertical-align: middle;" type="checkbox" id="agree" />
+                <label style="display:inline; float:none" for="agree">
+                  Jeg accepterer Wavell.dk's handelsbetingelser. <a href="/pages/terms-and-conditions">Læs mere</a>.
+                </label>
+              </p>
+              {% if wavellCare %}
+                <p>
+                  <input class="plus-minus" style="float:none; vertical-align: middle;" type="checkbox" id="agreeCare" />
+                  <label style="display:inline; float:none" for="agree">
+                    Jeg accepterer forsikringsbetingelser. <a href="/pages/terms-and-conditions">Læs mere</a>.
+                  </label>
+                </p>
+              {% endif %}
+            </div>
             <div class="row">
               <div class="col">
                 <h4 class="total">Total : {{ cart.total_price | money }}</h4>
@@ -113,4 +132,20 @@
       </div>
     </div>
   {% endif %}
+  {% if request.design_mode %}
+    {% section 'cart-additional-sale' %}
+  {% endif %}
 </div>
+<script>
+  $(document).ready(function() {
+    $('body').on('click', '[name="checkout"], [name="goto_pp"], [name="goto_gc"]', function() {
+      if ($('#agree').is(':checked') {% if wavellCare %} && $('#agreeCare').is(':checked') {% endif %}) {
+        $(this).submit();
+      }
+      else {
+        alert("Du skal godkende betingelser før du kan fuldføre dit køb");
+        return false;
+      }
+    });
+  });
+</script>

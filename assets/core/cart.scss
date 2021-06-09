@@ -92,6 +92,13 @@
       width: 125px;
     }
   }
+  .terms {
+    margin: 30px 0;
+    text-align: center;
+    > * {
+      width: 100%;
+    }
+  }
 }
 @mixin collection-over-lg {
   .cart {

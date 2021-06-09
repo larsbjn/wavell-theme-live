@@ -137,13 +137,12 @@
         </div>
     </div>
 </div>
-
+<script>var individualVariantImages = false;</script>
 {% if product.variants.size > 1 %}
 <script>
   $('#productSelect').on('change', function() {
     document.location = location.protocol + '//' + location.host + location.pathname + "?variant=" + this.value + "#product-details";
   });
-  var individualVariantImages = false;
   {% for block in section.blocks %}
     {% if block.settings.product-handle == product.handle %}
       {% if block.settings.individiualVariantImages %}

@@ -35,12 +35,22 @@
                 <div aria-labelledby="megamenu" class="dropdown-menu border-0 p-0 m-0">
                   <div class="container menu-desktop">
                     <div class="row">
-                      {% for childlink in linklists[child_list_handle].links limit:4 %}
+                      {% for childlink in linklists[child_list_handle].links limit:6 %}
                         <div class="col">
                           <a class="dropdown-item" href="{{ childlink.url }}">
                             <div>
-                              <img src="{{ childlink.object.featured_image | img_url: '256x' }}" />
-                              <p>{{ childlink.title | escape }}</p>
+                              {% if childlink.object.featured_image != null %}
+                                <img src="{{ childlink.object.featured_image | img_url: '256x' }}" />
+                              {% elsif childlink.title == "Historie" %}
+                                <img src="{{ "brand.jpeg" | asset_img_url: '256x' }}" />
+                              {% elsif childlink.title == "Blog" %}
+                                <img src="{{ "blueproject.jpeg" | asset_img_url: '256x256' }}" />
+                              {% elsif childlink.title == "Wavell BLUE Project" %}
+                                <img src="{{ "blueproject.jpeg" | asset_img_url: '256x256' }}" />
+                              {% elsif childlink.title == "Set på" %}
+                                <img src="{{ "blueproject.jpeg" | asset_img_url: '256x256' }}" />
+                              {% endif %}
+                                <p>{{ childlink.title | escape }}</p>
                             </div>
                           </a>
                         </div>
