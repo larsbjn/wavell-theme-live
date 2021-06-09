@@ -1,0 +1,36 @@
+.collection {
+  padding: 50px 0 30px 0;
+  text-align: center;
+  font-size: 1.5em;
+}
+.collection h1 {
+  margin: 10px auto;
+}
+.collection .item .info {
+  margin: 30px 0;
+}
+.collection .item img {
+  margin-top: 20px;
+  width: 100%;
+  max-height: 500px;
+  max-width: 500px;
+  object-fit: cover;
+  -webkit-transition: 0.15s transform ease-in-out;
+  -moz-transition: 0.15s transform ease-in-out;
+  -ms-transition: 0.15s transform ease-in-out;
+  -o-transition: 0.15s transform ease-in-out;
+  transition: 0.15s transform ease-in-out;
+}
+.collection .item:hover img {
+  transform: translateY(-5px);
+}
+.collection .pagination {
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.collection .more-link {
+  margin: 10px 0;
+}
+
+/*# sourceMappingURL=collection.css.map */

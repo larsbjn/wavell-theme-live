@@ -1,0 +1,143 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      {% for block in section.blocks %}
+        {% if block.settings.product-handle == product.handle %}
+          {% if block.settings.question1 != '' %}
+            <h2>{{ block.settings.qaTitle }}</h2>
+            {% render 'product-dropdown', title1: block.settings.question1, body1: block.settings.answer1,
+                    title2: block.settings.question2, body2: block.settings.answer2,
+                    title3: block.settings.question3, body3: block.settings.answer3,
+                    title4: block.settings.question4, body4: block.settings.answer4,
+                    title5: block.settings.question5, body5: block.settings.answer5,
+                    title6: block.settings.question6, body6: block.settings.answer6,
+                    prefix: "qa"
+            %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Q&A",
+  "settings": [
+  {
+    "type": "header",
+    "content": "Tilføj en blok for hvert produkt"
+  }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Product page",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Vælg produktet herunder, dette bestemmer hvilket produkt content skal vises på."
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-handle"
+        },
+        {
+          "type": "header",
+          "content": "Q&A"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift til Q&A",
+          "id": "qaTitle",
+          "default": "Q&A"
+        },
+        {
+          "type": "header",
+          "content": "Spørgsmål 1"
+        },
+        {
+          "type": "text",
+          "label": "Indtast spørgsmål",
+          "id": "question1"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast svar",
+          "id": "answer1"
+        },
+        {
+          "type": "header",
+          "content": "Spørgsmål 2"
+        },
+        {
+          "type": "text",
+          "label": "Indtast spørgsmål",
+          "id": "question2"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast svar",
+          "id": "answer2"
+        },
+        {
+          "type": "header",
+          "content": "Spørgsmål 3"
+        },
+        {
+          "type": "text",
+          "label": "Indtast spørgsmål",
+          "id": "question3"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast svar",
+          "id": "answer3"
+        },
+        {
+          "type": "header",
+          "content": "Spørgsmål 4"
+        },
+        {
+          "type": "text",
+          "label": "Indtast spørgsmål",
+          "id": "question4"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast svar",
+          "id": "answer4"
+        },
+        {
+          "type": "header",
+          "content": "Spørgsmål 5"
+        },
+        {
+          "type": "text",
+          "label": "Indtast spørgsmål",
+          "id": "question5"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast svar",
+          "id": "answer5"
+        },
+        {
+          "type": "header",
+          "content": "Spørgsmål 6"
+        },
+        {
+          "type": "text",
+          "label": "Indtast spørgsmål",
+          "id": "question6"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast svar",
+          "id": "answer6"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

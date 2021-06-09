@@ -1,0 +1,40 @@
+/* Fonts */
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n7.c496e9cf2031deec4c4bca338faa81971c8631d4.woff2?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=fa90a85c8ccccdf814cf7d848fdd913df3ba32b7a7081faadab1066826be09ab") format("woff2"), url("https://fonts.shopifycdn.com/montserrat/montserrat_n7.78b0223375c94b39ce1af7e09a0225f2bb3d05f7.woff?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=0a34c65ee666d20e76bd67468e10512d78f78feb6171951cc85d810566cdc103") format("woff");
+}
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_n4.1d581f6d4bf1a97f4cbc0b88b933bc136d38d178.woff2?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=e1aa1c9062eb5c75493c58081f81ded8a98bf65015b640948e05a8dac1e73106") format("woff2"), url("https://fonts.shopifycdn.com/montserrat/montserrat_n4.cfce41a967758ce5a9b7d48daeb5b028fd977a9b.woff?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=35cac63c3039aff2da8c81b5489aec9a9fd4609ef52e5e11835e1255a8e62e59") format("woff");
+}
+@font-face {
+  font-family: Futura;
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://fonts.shopifycdn.com/futura/futura_n4.df36ce3d9db534a4d7947f4aa825495ed740e410.woff2?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=8dc50256cde9d7953eec70ff1cc8490d915a137a57afc0334d20eb53e0d4ff3b") format("woff2"), url("https://fonts.shopifycdn.com/futura/futura_n4.6bce24beb4ba1ff4ddeb20f7cd6e2fa513a3d6ec.woff?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=b708f99037727ff4f22d765071090506426287085ddb2ddf15b085b8111a473f") format("woff");
+}
+@font-face {
+  font-family: Montserrat;
+  font-weight: 400;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_i4.ae02483b3d5e8777d0d4a4ccf396482c364d8955.woff2?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=09950c0656d78e7d0f367adc69f7412aab568eb55d8adf3902f81ea405497b83") format("woff2"), url("https://fonts.shopifycdn.com/montserrat/montserrat_i4.ba28d1a04ec09448de486d83c63235903dfc0af8.woff?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=87733c2fde07243091bd539e44b0388919c1fd083164a6420a24a3094ce8b90d") format("woff");
+}
+@font-face {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-style: italic;
+  src: url("https://fonts.shopifycdn.com/montserrat/montserrat_i7.83866c3eec90071fa974c17980ffb42977f9e667.woff2?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=32eab80faaa84b4cdc7e977d3e6b93a837776dbd0113145fd30110721b2cb7d7") format("woff2"), url("https://fonts.shopifycdn.com/montserrat/montserrat_i7.25524241b12d864609c85325613d60efcf1a87e3.woff?h1=cmF5Y29uZ2xvYmFsLmNvbQ&h2=YnV5cmF5Y29uLmNvbQ&h3=Z2V0cmF5Y29uLmNvbQ&hmac=4431a2d3be445b380b074b40c45f5da74ba719fb059b273f8f2dc2707199a9db") format("woff");
+}
+@font-face {
+  font-family: "icons";
+  src: url("//cdn.shopify.com/s/files/1/2404/0041/t/45/assets/icons.eot?v=3364567537052764893");
+  src: url("//cdn.shopify.com/s/files/1/2404/0041/t/45/assets/icons.eot?v=3364567537052764893#iefix") format("embedded-opentype"), url("//cdn.shopify.com/s/files/1/2404/0041/t/45/assets/icons.woff?v=371582728864620814") format("woff"), url("//cdn.shopify.com/s/files/1/2404/0041/t/45/assets/icons.ttf?v=10529776329753831131") format("truetype"), url("//cdn.shopify.com/s/files/1/2404/0041/t/45/assets/icons.svg?v=8022031131045997127#timber-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/*# sourceMappingURL=fonts.css.map */

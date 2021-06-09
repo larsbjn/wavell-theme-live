@@ -1,0 +1,378 @@
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+<div class="container">
+  <a class="anchor" id="product-details"></a>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div class="container">
+                <div class="row">
+                    <div class="arrow-container col-lg-1 d-none d-lg-flex">
+                        <i id="previous-slide" class="bi bi-arrow-left"></i>
+                    </div>
+                    <div class="col-12 col-lg-10 product-image-slider product-image-slider">
+                        {% for image in product.images %}
+                            <div class="{{ image.alt | escape }}">
+                                <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div id="next-slide" class="arrow-container col-lg-1 d-none d-lg-flex">
+                        <i class="bi bi-arrow-right"></i>
+                    </div>
+                </div>
+                <div class="row slider-navigation">
+                  {% for block in section.blocks %}
+                    {% if block.settings.product-handle == product.handle %}
+                      {% assign temp = true %}
+                    {% endif %}
+                  {% endfor %}
+                  {% for image in product.images %}
+                    {% if temp %}
+                      {% for block in section.blocks %}
+                        {% if block.settings.product-handle == product.handle %}
+                          {% if block.settings.individiualVariantImages %}
+                            {% if image.alt == current_variant.title %}
+                                <div class="col-3">
+                                    <div class="slider-navigation-image" data-slide="{{ forloop.index }}">
+                                        <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
+                                    </div>
+                                </div>
+                            {% endif %}
+                          {% else %}
+                            <div class="col-3">
+                              <div class="slider-navigation-image" data-slide="{{ forloop.index }}">
+                                <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
+                              </div>
+                            </div>
+                          {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  {% else %}
+                      <div class="col-3">
+                        <div class="slider-navigation-image" data-slide="{{ forloop.index }}">
+                          <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
+                        </div>
+                      </div>
+                  {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="product-information col-12 col-lg-6">
+            <h1>{{ product.title }}</h1>
+            {% if product.available %}
+                <h6 class="product-available">På lager</h6>
+            {% else %}
+                <h6 class="product-soldout">Ej på lager</h6>
+            {% endif %}
+            <div class="description">{{ product.description }}</div>
+            {% if product.available %}
+                    {% if current_variant.compare_at_price %}
+                        <h5 class="product-discount-percentage">
+                        {{ current_variant.compare_at_price | minus:current_variant.price | times:100 | divided_by:current_variant.compare_at_price }}% rabat
+                        </h5>
+                    {% endif %}
+                    <h3 class="product-price">
+                            <span {% if current_variant.compare_at_price %} class="discounted" {% endif %}>
+                                {{ current_variant.price | money }}
+                            </span>
+                            <s>{{ current_variant.compare_at_price | money }}</s>
+                    </h3>
+                    {% for block in section.blocks %}
+                      {% if block.settings.product-handle == product.handle %}
+                        {% if block.settings.ar != "" %}
+                          {% render 'ar', ar: block.settings.ar, name: product.title %}
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                    {% if product.variants.size > 1 %}
+                        <select class="custom-select" name="id" id="productSelect">
+                            {% for variant in product.variants %}
+                                {% if variant.available %}
+                                    <option {% if current_variant.id == variant.id %} selected {% endif %} data-title="{{ variant.title }}" value="{{ variant.id }}">
+                                        {{ variant.title }}
+                                    </option>
+                                {% else %}
+                                    <option disabled="disabled">
+                                        {{ variant.title }} - Udsolgt
+                                    </option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    {% else %}
+                      <select class="custom-select d-none" name="id" id="productSelect">
+                        <option selected value="{{ product.first_available_variant.id }}"></option>
+                      </select>
+                    {% endif %}
+                    <div class="align-items-vertical justify-content-between">
+                        <input type="number" class="form-control" id="Quantity" name="quantity" value="1" min="1">
+                        <button type="submit" name="add" class="btn" id="AddToCart"><i class="bi bi-basket"></i> Tilføj til kurv</button>
+                    </div>
+                    {% for block in section.blocks %}
+                      {% if block.settings.product-handle == product.handle %}
+                        <div>
+                          {% if block.settings.product1 != '' %}
+                            <hr/>
+                            {% render 'additional-sale', productId: block.settings.product1, description: block.settings.description1, service: block.settings.service1, variant: block.settings.variant1, textInput: block.settings.textInput1 %}
+                          {% endif %}
+                          {% if block.settings.product2 != '' %}
+                            {% render 'additional-sale', productId: block.settings.product2, description: block.settings.description2, service: block.settings.service2, variant: block.settings.variant2, textInput: block.settings.textInput2 %}
+                          {% endif %}
+                          {% if block.settings.product3 != '' %}
+                            {% render 'additional-sale', productId: block.settings.product3, description: block.settings.description3, service: block.settings.service3, variant: block.settings.variant3, textInput: block.settings.textInput3 %}
+                          {% endif %}
+                          {% if block.settings.product4 != '' %}
+                            {% render 'additional-sale', productId: block.settings.product4, description: block.settings.description4, service: block.settings.service4, variant: block.settings.variant4, textInput: block.settings.textInput4 %}
+                          {% endif %}
+                          {% if block.settings.product5 != '' %}
+                            {% render 'additional-sale', productId: block.settings.product5, description: block.settings.description5, service: block.settings.service5, variant: block.settings.variant5, textInput: block.settings.textInput5 %}
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                    {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% if product.variants.size > 1 %}
+<script>
+  $('#productSelect').on('change', function() {
+    document.location = location.protocol + '//' + location.host + location.pathname + "?variant=" + this.value + "#product-details";
+  });
+  var individualVariantImages = false;
+  {% for block in section.blocks %}
+    {% if block.settings.product-handle == product.handle %}
+      {% if block.settings.individiualVariantImages %}
+         individualVariantImages = true;
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</script>
+{% endif %}
+{% schema %}
+{
+  "name": "Mersalg / AR model",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tilføj en blok for hvert produkt"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Product page",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Vælg produktet herunder, dette bestemmer hvilket produkt disse mersalg skal vises på."
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-handle"
+        },
+        {
+          "type": "checkbox",
+          "id": "individiualVariantImages",
+          "label": "Tjek af hvis produktet skal bruge individuelle variant billeder",
+          "default": false,
+          "info": "Hvis der skal bruges individuelle billeder f.eks. Wavell ONE Coffee viser kun billeder af Coffee. Det er vigtigt at billedernes ALT beskrivelse hedder variant navnet, præcist!"
+        },
+        {
+          "type": "header",
+          "content": "AR model",
+          "info": "Navnet på AR modellen der ligger i Assets mappen"
+        },
+        {
+          "type": "text",
+          "label": "AR model navn",
+          "id": "ar"
+        },
+        {
+          "type": "header",
+          "content": "Mersalg 1",
+          "info": "Efterlad et mersalg produkt tomt, hvis det ikke skal vises."
+        },
+        {
+          "type": "product",
+          "label": "Mersalg produkt",
+          "id": "product1"
+        },
+        {
+          "type": "text",
+          "label": "Mersalg beskrivelse / Variant type (e.g. Størrelse)",
+          "id": "description1"
+        },
+        {
+          "type": "checkbox",
+          "id": "service1",
+          "label": "Ydelse",
+          "default": false,
+          "info": "Hvis dette er en ydelse (e.g. Gaveindpakning)"
+        },
+        {
+          "type": "checkbox",
+          "id": "textInput1",
+          "label": "Tekst input",
+          "default": false,
+          "info": "Hvis denne ydelse bruger et tekst input (e.g. Gravering)"
+        },
+        {
+          "type": "checkbox",
+          "id": "variant1",
+          "label": "Variant",
+          "default": false,
+          "info": "Hvis dette er en variant vare (e.g. Ear-tips i forskellige størrelser)"
+        },
+        {
+          "type": "header",
+          "content": "Mersalg 2",
+          "info": "Efterlad et mersalg produkt tomt, hvis det ikke skal vises."
+        },
+        {
+          "type": "product",
+          "label": "Mersalg produkt",
+          "id": "product2"
+        },
+        {
+          "type": "text",
+          "label": "Mersalg beskrivelse / Variant type (e.g. Størrelse)",
+          "id": "description2"
+        },
+        {
+          "type": "checkbox",
+          "id": "service2",
+          "label": "Ydelse",
+          "default": false,
+          "info": "Hvis dette er en ydelse (e.g. Gaveindpakning)"
+        },
+        {
+          "type": "checkbox",
+          "id": "textInput2",
+          "label": "Tekst input",
+          "default": false,
+          "info": "Hvis denne ydelse bruger et tekst input (e.g. Gravering)"
+        },
+        {
+          "type": "checkbox",
+          "id": "variant2",
+          "label": "Variant",
+          "default": false,
+          "info": "Hvis dette er en variant vare (e.g. Ear-tips i forskellige størrelser)"
+        },
+        {
+          "type": "header",
+          "content": "Mersalg 3",
+          "info": "Efterlad et mersalg produkt tomt, hvis det ikke skal vises."
+        },
+        {
+          "type": "product",
+          "label": "Mersalg produkt ",
+          "id": "product3"
+        },
+        {
+          "type": "text",
+          "label": "Mersalg beskrivelse / Variant type (e.g. Størrelse)",
+          "id": "description3"
+        },
+        {
+          "type": "checkbox",
+          "id": "service3",
+          "label": "Ydelse",
+          "default": false,
+          "info": "Hvis dette er en ydelse (e.g. Gaveindpakning)"
+        },
+        {
+          "type": "checkbox",
+          "id": "textInput3",
+          "label": "Tekst input",
+          "default": false,
+          "info": "Hvis denne ydelse bruger et tekst input (e.g. Gravering)"
+        },
+        {
+          "type": "checkbox",
+          "id": "variant3",
+          "label": "Variant",
+          "default": false,
+          "info": "Hvis dette er en variant vare (e.g. Ear-tips i forskellige størrelser)"
+        },
+        {
+          "type": "header",
+          "content": "Mersalg 4",
+          "info": "Efterlad et mersalg produkt tomt, hvis det ikke skal vises."
+        },
+        {
+          "type": "product",
+          "label": "Mersalg produkt",
+          "id": "product4"
+        },
+        {
+          "type": "text",
+          "label": "Mersalg beskrivelse / Variant type (e.g. Størrelse)",
+          "id": "description4"
+        },
+        {
+          "type": "checkbox",
+          "id": "service4",
+          "label": "Ydelse",
+          "default": false,
+          "info": "Hvis dette er en ydelse (e.g. Gaveindpakning)"
+        },
+        {
+          "type": "checkbox",
+          "id": "textInput4",
+          "label": "Tekst input",
+          "default": false,
+          "info": "Hvis denne ydelse bruger et tekst input (e.g. Gravering)"
+        },
+        {
+          "type": "checkbox",
+          "id": "variant4",
+          "label": "Variant",
+          "default": false,
+          "info": "Hvis dette er en variant vare (e.g. Ear-tips i forskellige størrelser)"
+        },
+        {
+          "type": "header",
+          "content": "Mersalg 5",
+          "info": "Efterlad et mersalg produkt tomt, hvis det ikke skal vises."
+        },
+        {
+          "type": "product",
+          "label": "Mersalg produkt",
+          "id": "product5"
+        },
+        {
+          "type": "text",
+          "label": "Mersalg beskrivelse / Variant type (e.g. Størrelse)",
+          "id": "description5"
+        },
+        {
+          "type": "checkbox",
+          "id": "service5",
+          "label": "Ydelse",
+          "default": false,
+          "info": "Hvis dette er en ydelse (e.g. Gaveindpakning)"
+        },
+        {
+          "type": "checkbox",
+          "id": "textInput5",
+          "label": "Tekst input",
+          "default": false,
+          "info": "Hvis denne ydelse bruger et tekst input (e.g. Gravering)"
+        },
+        {
+          "type": "checkbox",
+          "id": "variant5",
+          "label": "Variant",
+          "default": false,
+          "info": "Hvis dette er en variant vare (e.g. Ear-tips i forskellige størrelser)"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

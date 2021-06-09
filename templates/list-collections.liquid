@@ -1,0 +1,32 @@
+<div class="collection">
+  <div class="container">
+    {% for collection in collections %}
+      {% unless collection.handle == 'frontpage' %}
+        {% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+        <div class="row">
+          <h1>{{ collection_title }}</h1>
+        </div>
+        <div class="row">
+          {% for product in collection.products limit:5 %}
+            <div class="col-12 col-lg-6 item">
+              <a href="{{ product.url | within: collection }}">
+                <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+              </a>
+              <div class="info">
+                <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                <br/>
+                {{ product.price | money }}
+                {% unless product.available %}<br><strong>sold out</strong>{% endunless %}
+                <hr/>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="col-12 more-link">
+          <a href="{{ collection.url }}">Mere {{ collection_title }} &rsaquo;</a>
+          <hr style="margin-bottom: 10px"/>
+        </div>
+      {% endunless %}
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="collection">
+  {% paginate collection.products by 9 %}
+    <div class="container">
+      <div class="row">
+        <h1>{{ collection.title }}</h1>
+      </div>
+      <div class="row">
+        {% for product in collection.products %}
+          <div class="col-12 col-lg-4 item">
+            <a href="{{ product.url | within: collection }}">
+              <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+            </a>
+            <div class="info">
+              <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+              <br/>
+              {{ product.price | money }}{% unless product.available %} - Udsolgt{% endunless %}
+              <hr/>
+            </div>
+          </div>
+        {% else %}
+          <p>no matches</p>
+        {% endfor %}
+      </div>
+      <div class="row">
+        <div class="col pagination">
+          {% if paginate.pages > 1 %}
+            {{ paginate | default_pagination: next: 'Næste', previous: 'Forrige' }}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endpaginate %}
+</div>

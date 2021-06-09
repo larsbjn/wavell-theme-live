@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row card-in-row">
+    {% for block in section.blocks %}
+      <div class="col-12 col-lg-6">
+        <a href="{{ block.settings.url }}">
+          <div class="card-container brand">
+            <div class="card brand-card">
+              <div class="card-img">
+                <img alt="Brand" class="rounded-img" src="{{ block.settings.img | img_url: 'grande' }}" loading="lazy"/>
+              </div>
+            </div>
+            <h4>{{ block.settings.title }}</h4>
+            <hr/>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Card Links",
+  "blocks": [
+    {
+      "type": "card-link",
+      "name": "Card Link",
+      "settings": [
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Titel til link"
+        },
+        {
+          "id": "img",
+          "type": "image_picker",
+          "label": "Billede for link",
+          "info": "Det er vigtigt at billede er 1920x1080 pixels"
+        },
+        {
+          "id": "url",
+          "type": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

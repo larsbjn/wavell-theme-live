@@ -1,0 +1,96 @@
+/* Variables */
+.index > div:not(:first-child), .index #shopify-section-card-for-index .card-container {
+  margin: 50px auto;
+}
+.index #top-banner {
+  text-align: center;
+}
+.index #top-banner #title {
+  opacity: 0;
+  text-align: center;
+  width: 100%;
+  font-size: 5em;
+  letter-spacing: 10px;
+  margin-bottom: 0;
+  line-height: normal;
+}
+.index #top-banner img {
+  opacity: 0;
+  max-width: 1180px;
+}
+.index #top-banner a {
+  text-transform: uppercase;
+  opacity: 0;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+.index .news .blue-card {
+  padding-bottom: 30px;
+}
+.index .trustpilot-widget {
+  text-align: center;
+  margin: 80px 0 !important;
+}
+.index .highlighted-products a {
+  border-color: #F92954;
+  color: #F92954;
+  margin: 0 auto;
+}
+.index .highlighted-products a:hover {
+  background: #F92954;
+  color: white;
+}
+.index .seen-in h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+.index .seen-in .company-img {
+  height: 25px;
+  margin: 10px;
+}
+.index .blue-project .blue-project-card, .index .blue-project .brand-card, .index .brand .blue-project-card, .index .brand .brand-card {
+  margin-bottom: 30px;
+}
+.index .blue-project h4, .index .brand h4 {
+  color: #032B43;
+}
+
+@media all and (min-width: 992px) {
+  nav {
+    background: rgba(235, 235, 235, 0);
+  }
+
+  .index > div:not(:first-child) {
+    margin: 60px auto;
+  }
+  .index .highlighted-products {
+    display: block;
+  }
+  .index .highlighted-products .product-tile img {
+    -webkit-transition: 0.15s transform ease-in-out;
+    -moz-transition: 0.15s transform ease-in-out;
+    -ms-transition: 0.15s transform ease-in-out;
+    -o-transition: 0.15s transform ease-in-out;
+    transition: 0.15s transform ease-in-out;
+  }
+  .index .highlighted-products .product-tile:hover img {
+    transform: translateY(-5px);
+  }
+  .index .blue-project .card, .index .brand .card {
+    -webkit-transition: 0.15s transform ease-in-out;
+    -moz-transition: 0.15s transform ease-in-out;
+    -ms-transition: 0.15s transform ease-in-out;
+    -o-transition: 0.15s transform ease-in-out;
+    transition: 0.15s transform ease-in-out;
+  }
+  .index .blue-project:hover .card, .index .brand:hover .card {
+    transform: translateY(-5px);
+  }
+  .index .seen-in .company-img {
+    height: 35px;
+    margin: 20px;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

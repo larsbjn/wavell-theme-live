@@ -1,0 +1,28 @@
+/* For desktop >SM */
+@media all and (min-width: 576px) {
+
+}
+
+/* For desktop >MD */
+@media all and (min-width: 768px) {
+  @include footer-over-md();
+}
+
+/* For desktop >LG */
+@media all and (min-width: 992px) {
+  @include navigation-over-lg();
+  @include common-over-lg();
+  @include collection-over-lg();
+  //@include index-over-lg();
+}
+
+/* For desktop >XL */
+@media all and (min-width: 1200px) {
+
+}
+
+/* For desktop >XXL */
+@media all and (min-width: 1400px) {
+
+}
+

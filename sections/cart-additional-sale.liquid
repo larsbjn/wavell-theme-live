@@ -1,0 +1,44 @@
+{% assign product = all_products[section.settings.product] %}
+{% assign current_variant = product.selected_or_first_available_variant %}
+<div class="card-container">
+  <div class="card cart-card">
+    <div class="row">
+      <div class="col">
+        <h5>{{ section.settings.text }}</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="info align-items-vertical justify-content-center">
+          <img alt="{{ product.featured_image.alt }}" src="{{ product.featured_image | img_url: 'large' }}" loading="lazy"/>
+          <div>
+            <h6>{{ current_variant.price | money }}</h6>
+            <a class="checkout-btn" href="/cart/add?id={{ current_variant.id }}&return_to=/checkout?discount={{ section.settings.discount }}">Ja tak!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Additional sale",
+  "settings": [
+    {
+      "label": "Vælg produkt",
+      "type": "product",
+      "id": "product"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Indsæt beskrivelse"
+    },
+    {
+      "type": "text",
+      "id": "discount",
+      "label": "Indsæt rabatkode navn"
+    }
+  ]
+}
+{% endschema %}

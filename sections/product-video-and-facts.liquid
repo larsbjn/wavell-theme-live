@@ -1,0 +1,194 @@
+<div class="container facts">
+  <div class="row">
+    {% for block in section.blocks %}
+      {% if block.settings.product-handle == product.handle %}
+        {% if block.settings.video_url and block.settings.fact1 != '' %}
+          <div class="col-12 col-lg-6">
+            {% if block.settings.videoTitle != '' %}
+              <h2>{{ block.settings.videoTitle }}</h2>
+            {% endif %}
+            {% assign videoId = block.settings.video_url | split: '/' %}
+            <div class="responsive-video">
+              <iframe width="560" height="315" src="{{ 'https://www.youtube.com/embed/' | append: videoId[3] }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 facts-dropdown">
+            {% if block.settings.factsTitle != '' %}
+              <h2>{{ block.settings.factsTitle }}</h2>
+            {% endif %}
+            {% render 'product-dropdown', title1: block.settings.title1, body1: block.settings.fact1,
+                    title2: block.settings.title2, body2: block.settings.fact2,
+                    title3: block.settings.title3, body3: block.settings.fact3,
+                    title4: block.settings.title4, body4: block.settings.fact4,
+                    title5: block.settings.title5, body5: block.settings.fact5,
+                    title6: block.settings.title6, body6: block.settings.fact6,
+                    prefix: "facts"
+            %}
+          </div>
+        {% elsif block.settings.video_url %}
+          <div class="col-12">
+            {% if block.settings.videoTitle != '' %}
+              <h2>{{ block.settings.videoTitle }}</h2>
+            {% endif %}
+            {% assign videoId = block.settings.video_url | split: '/' %}
+            <div class="responsive-video">
+              <iframe width="560" height="315" src="{{ 'https://www.youtube.com/embed/' | append: videoId[3] }}" frameborder="0" allowfullscreen></iframe>
+            </div>
+          </div>
+        {% else %}
+          <div class="col-12">
+            {% if block.settings.factsTitle != '' %}
+              <h2>{{ block.settings.factsTitle }}</h2>
+            {% endif %}
+            {% render 'product-dropdown', title1: block.settings.title1, body1: block.settings.fact1,
+                    title2: block.settings.title2, body2: block.settings.fact2,
+                    title3: block.settings.title3, body3: block.settings.fact3,
+                    title4: block.settings.title4, body4: block.settings.fact4,
+                    title5: block.settings.title5, body5: block.settings.fact5,
+                    title6: block.settings.title6, body6: block.settings.fact6,
+                    prefix: "facts"
+            %}
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Video & Fakta",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tilføj en blok for hvert produkt"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Product page",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Vælg produktet herunder, dette bestemmer hvilket produkt content skal vises på."
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-handle"
+        },
+        {
+          "type": "header",
+          "content": "Video"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "videoTitle"
+        },
+        {
+          "id": "video_url",
+          "type": "video_url",
+          "label": "Link til den video som skal vises",
+          "accept": ["youtube", "vimeo"],
+          "info": "Videoen skal uploades til Youtube. Inde på Youtube, tryk på del knappen og kopier det korte url den viser."
+        },
+        {
+          "type": "header",
+          "content": "Faktaboks"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "factsTitle"
+        },
+        {
+          "type": "header",
+          "content": "Fakta 1"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title1"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast fakta",
+          "id": "fact1"
+        },
+        {
+          "type": "header",
+          "content": "Fakta 2"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title2"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast fakta",
+          "id": "fact2"
+        },
+        {
+          "type": "header",
+          "content": "Fakta 3"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title3"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast fakta",
+          "id": "fact3"
+        },
+        {
+          "type": "header",
+          "content": "Fakta 4"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title4"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast fakta",
+          "id": "fact4"
+        },
+        {
+          "type": "header",
+          "content": "Fakta 5"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title5"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast fakta",
+          "id": "fact5"
+        },
+        {
+          "type": "header",
+          "content": "Fakta 6"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title6"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast fakta",
+          "id": "fact6"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

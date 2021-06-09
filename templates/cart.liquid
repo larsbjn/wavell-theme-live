@@ -1,0 +1,116 @@
+<div class="container cart">
+  {% if cart.item_count > 0 %}
+    <div class="row">
+      <div class="col">
+        <h1>Kurv</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <form action="/cart" method="post" novalidate>
+          <div class="container">
+            <div class="row d-none d-lg-flex">
+              <div class="col-6">
+                <h4>Produkt</h4>
+              </div>
+              <div class="col-3">
+                <h4>Antal</h4>
+              </div>
+              <div class="col-3">
+                <h4>Total</h4>
+              </div>
+            </div>
+            <hr/>
+            {% for item in cart.items %}
+              <div class="row cart-line">
+                <div class="col-12 col-lg-6">
+                  <a class="align-items-vertical justify-content-start cart-information" href="{{ item.url | within: collections.all }}">
+                    <img class="cart-img" src="{{ item | img_url: 'medium' }}" alt="{{ item.title | escape }}">
+                    <div>
+                      <span class="cart-information-head">{{ item.product.title }}</span>
+                      <br/>
+                      <span class="cart-information-content">{{ item.variant.title }}</span>
+                      <br/>
+                      <span class="cart-information-content">{{ item.price | money }}</span>
+                      {% unless item.properties == empty %}
+                        {% for property in item.properties %}
+                          <br/>
+                          <span class="cart-information-content cart-property">{{ property.first }}: {{ property.last }}</span>
+                        {% endfor %}
+                      {% endunless %}
+                    </div>
+                  </a>
+                </div>
+                <div class="col-12 col-lg-3 align-items-vertical">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <button class="btn btn-outline-secondary qty-minus" data-qty="updates_{{ forloop.index }}" type="button">-</button>
+                    </div>
+                    <input type="number" class="form-control qty-input" name="updates[]" data-val="{{ item.quantity }}" data-id="updates_{{ forloop.index }}" id="updates_{{ item.key }}" value="{{ item.quantity }}" min="0">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary qty-plus" data-qty="updates_{{ forloop.index }}" type="button">+</button>
+                    </div>
+                    <a class="cart-remove" href="/cart/change?line={{ forloop.index }}&amp;quantity=0">Fjern</a>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-3 align-items-vertical">
+                  {% if item.original_line_price != item.line_price %}<h5 class="cart-price">{{ item.original_line_price | money }}</h5>{% endif %}
+                  <h5 class="cart-price">{{ item.line_price | money }}</h5>
+                  {% for discount in item.discounts %}{{ discount.title }}{% endfor %}
+                </div>
+              </div>
+              <hr/>
+            {% endfor %}
+            <div class="row">
+              <div class="col-12 col-lg-6 offset-lg-3">
+                <div class="note">
+                  <div class="card-container">
+                    <div class="card">
+                      <h2>Tilføj en note</h2>
+                      <textarea class="form-control" name="note" id="CartNote" placeholder="Nogle ord til Wavell teamet" rows="4">{{ cart.note }}</textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <hr/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-lg-6 offset-lg-3">
+                {% section 'cart-additional-sale' %}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h4 class="total">Total : {{ cart.total_price | money }}</h4>
+                <input type="submit" class="btn action-btn" id="cart_update" value="Opdater kurv" />
+                <input type="submit" class="btn action-btn checkout-btn" name="checkout" value="Check ud" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  {% else %}
+    <div class="row">
+      <div class="col">
+        <h2>Kurv</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <br/>
+        <h5>Kurven er tom</h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <br/>
+        <a class="action-btn" href="/">Shop videre</a>
+      </div>
+    </div>
+  {% endif %}
+</div>

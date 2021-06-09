@@ -1,0 +1,132 @@
+{% for block in section.blocks %}
+  {% if block.settings.description and block.settings.image %}
+    {% render 'card', rightStyle: block.settings.rightStyle, title: block.settings.title,
+            description: block.settings.description, image: block.settings.image,
+            paddingTop: block.settings.paddingTop, paddingBottom: block.settings.paddingBottom,
+            paddingLeft: block.settings.paddingLeft, paddingRight: block.settings.paddingRight,
+            backgroundColor: block.settings.backgroundColor, ctaLink: block.settings.ctaLink,
+            ctaText: block.settings.ctaText, ctaColor: block.settings.ctaColor,
+            textColor: block.settings.textColor, id: forloop.index, imageSize: block.settings.imageSize,
+            gradientBackground: block.settings.gradientBackground
+    %}
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Cards",
+  "blocks": [
+    {
+      "type": "cards",
+      "name": "Cards",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Card"
+        },
+        {
+          "type": "paragraph",
+          "content": "Efterlad et card tomt, hvis det ikke skal vises. Kræver både et billede og en beskrivelse."
+        },
+        {
+          "type": "checkbox",
+          "id": "rightStyle",
+          "label": "Billede til højre",
+          "default": false,
+          "info": "Skal tjekkes af hvis billede skal være til højre og nederst på mobil"
+        },
+        {
+        "type": "text",
+        "label": "Indtast overskrift",
+        "id": "title"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast beskrivelse",
+          "id": "description"
+        },
+        {
+          "type": "color",
+          "label": "Beskrivelse tekst farve",
+          "id": "textColor",
+          "default": "#000000"
+        },
+        {
+          "type": "number",
+          "label": "Top mellemrum",
+          "info": "Mellemrum mellem toppen og content",
+          "id": "paddingTop",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Bund mellemrum",
+          "info": "Mellemrum mellem bunden og content",
+          "id": "paddingBottom",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Venstre mellemrum",
+          "info": "Mellemrum mellem venstre og content",
+          "id": "paddingLeft",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Højre mellemrum",
+          "info": "Mellemrum mellem højre og content",
+          "id": "paddingRight",
+          "default": 0
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede",
+          "id": "image"
+        },
+        {
+          "type": "range",
+          "id": "imageSize",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "billede størrelse",
+          "default": 100
+        },
+        {
+          "type": "color",
+          "label": "Baggrundsfarve",
+          "id": "backgroundColor",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "label": "Gradient baggrund",
+          "info": "Brug: https://cssgradient.io/ til at lave gradient baggrunde, og kopier koden ind i dette tekstfelt. Efterlad tom hvis normal baggrund skal bruges.",
+          "id": "gradientBackground"
+        },
+        {
+          "type": "url",
+          "label": "Call to action link",
+          "info": "Link til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaLink"
+        },
+        {
+          "type": "text",
+          "label": "Call to action tekst",
+          "info": "Tekst til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaText"
+        },
+        {
+          "type": "color",
+          "label": "Call to action farve",
+          "id": "ctaColor",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

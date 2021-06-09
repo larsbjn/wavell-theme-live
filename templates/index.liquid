@@ -1,0 +1,19 @@
+<div class="index">
+  {% section 'index-header' %}
+  {% section 'wavell-fact-box' %}
+  <div class="container highlighted-products">
+    {% section 'index-highlighted-products' %}
+  </div>
+  <div class="trustpilot-widget" data-locale="da-DK" data-template-id="5613c9cde69ddc09340c6beb" data-businessunit-id="5d87dee135180f0001f13a22" data-style-height="100%" data-style-width="100%" data-theme="light">
+    <a href="https://dk.trustpilot.com/review/wavell.dk" target="_blank" rel="noopener">Trustpilot</a>
+  </div>
+  {% section 'index-cards' %}
+  <div class="seen-in container">
+    {% section 'index-seen-in' %}
+  </div>
+  {% section 'index-card-link' %}
+  <div class="container">
+    {{ content_for_index }}
+  </div>
+  {% section 'wavell-fact-box' %}
+</div>

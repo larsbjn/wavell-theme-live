@@ -1,0 +1,66 @@
+<div class="row">
+  {% if section.settings.product1 != '' and section.settings.title1 != '' %}
+    <div class="col">
+      {% render 'product-tile', productname: section.settings.product1, title: section.settings.title1 %}
+    </div>
+  {% endif %}
+  {% if section.settings.product2 != '' and section.settings.title2 != '' %}
+    <div class="col">
+      {% render 'product-tile', productname: section.settings.product2, title: section.settings.title2 %}
+    </div>
+  {% endif %}
+  {% if section.settings.product3 != '' and section.settings.title3 != '' %}
+    <div class="col">
+      {% render 'product-tile', productname: section.settings.product3, title: section.settings.title3 %}
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Fremhævede produkter",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Produkt 1"
+    },
+    {
+      "id": "product1",
+      "type": "product",
+      "label": "Produkt"
+    },
+    {
+      "id": "title1",
+      "type": "text",
+      "label": "Caption"
+    },
+    {
+      "type": "header",
+      "content": "Produkt 2"
+    },
+    {
+      "id": "product2",
+      "type": "product",
+      "label": "Produkt"
+    },
+    {
+      "id": "title2",
+      "type": "text",
+      "label": "Caption"
+    },
+    {
+      "type": "header",
+      "content": "Produkt 3"
+    },
+    {
+      "id": "product3",
+      "type": "product",
+      "label": "Produkt"
+    },
+    {
+      "id": "title3",
+      "type": "text",
+      "label": "Caption"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,185 @@
+{% for block in section.blocks %}
+  {% if block.settings.product-handle == product.handle %}
+    <div class="small-product-information">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1>{{ block.settings.headline }}</h1>
+            <h6>{{ block.settings.subHeadline }}</h6>
+          </div>
+        </div>
+        <div class="row">
+          {% if block.settings.information1 != "" %}
+            {% render 'small-product-information', image: block.settings.image1, information: block.settings.information1 %}
+          {% endif %}
+          {% if block.settings.information2 != "" %}
+            {% render 'small-product-information', image: block.settings.image2, information: block.settings.information2 %}
+          {% endif %}
+          {% if block.settings.information3 != "" %}
+            {% render 'small-product-information', image: block.settings.image3, information: block.settings.information3 %}
+          {% endif %}
+          {% if block.settings.information4 != "" %}
+            {% render 'small-product-information', image: block.settings.image4, information: block.settings.information4 %}
+          {% endif %}
+          {% if block.settings.information5 != "" %}
+            {% render 'small-product-information', image: block.settings.image5, information: block.settings.information5 %}
+          {% endif %}
+          {% if block.settings.information6 != "" %}
+            {% render 'small-product-information', image: block.settings.image6, information: block.settings.information6 %}
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+    {% style %}
+      .small-product-information {
+        background-color: {{ block.settings.backgroundColor }};
+        color: {{ block.settings.fontColor }};
+      }
+    {% endstyle %}
+  {% endif %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Product Information",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tilføj en blok for hvert produkt"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "header",
+      "name": "Product page",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Vælg produktet herunder, dette bestemmer hvilket produkt header skal vises på."
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-handle"
+        },
+        {
+          "type": "header",
+          "content": "Indstillinger"
+        },
+        {
+          "type": "color",
+          "label": "Baggrundsfarve",
+          "id": "backgroundColor",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "label": "Overskrift",
+          "id": "headline"
+        },
+        {
+          "type": "text",
+          "label": "Undertitel",
+          "id": "subHeadline"
+        },
+        {
+          "type": "color",
+          "label": "Tekst farve",
+          "id": "fontColor",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Info 1",
+          "info": "Efterlad tom hvis den ikke skal vises"
+        },
+        {
+          "type": "text",
+          "label": "Indtast information",
+          "id": "information1"
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede til information",
+          "id": "image1"
+        },
+        {
+          "type": "header",
+          "content": "Info 2",
+          "info": "Efterlad tom hvis den ikke skal vises"
+        },
+        {
+          "type": "text",
+          "label": "Indtast information",
+          "id": "information2"
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede til information",
+          "id": "image2"
+        },
+        {
+          "type": "header",
+          "content": "Info 3",
+          "info": "Efterlad tom hvis den ikke skal vises"
+        },
+        {
+          "type": "text",
+          "label": "Indtast information",
+          "id": "information3"
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede til information",
+          "id": "image3"
+        },
+        {
+          "type": "header",
+          "content": "Info 4",
+          "info": "Efterlad tom hvis den ikke skal vises"
+        },
+        {
+          "type": "text",
+          "label": "Indtast information",
+          "id": "information4"
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede til information",
+          "id": "image4"
+        },
+        {
+          "type": "header",
+          "content": "Info 5",
+          "info": "Efterlad tom hvis den ikke skal vises"
+        },
+        {
+          "type": "text",
+          "label": "Indtast information",
+          "id": "information5"
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede til information",
+          "id": "image5"
+        },{
+          "type": "header",
+          "content": "Info 6",
+          "info": "Efterlad tom hvis den ikke skal vises"
+        },
+        {
+          "type": "text",
+          "label": "Indtast information",
+          "id": "information6"
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede til information",
+          "id": "image6"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

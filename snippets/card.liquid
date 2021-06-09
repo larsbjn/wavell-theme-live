@@ -1,0 +1,58 @@
+<div class="card-container">
+  <div class="container card" id="card{{ id }}" style="padding: {{ paddingTop }}px {{ paddingRight }}px {{ paddingBottom }}px {{ paddingLeft }}px; background-color: {{ backgroundColor }};">
+    <div class="row">
+      {% if rightStyle %}
+        <div class="col-12 col-lg-6 card-text">
+          <div class="card-text-center">
+            <div class="text-left">
+              <h1>{{ title }}</h1>
+              {{ description }}
+            </div>
+            {% if ctaLink %}
+              <a class="action-btn" href="{{ ctaLink }}">{{ ctaText }}</a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 card-img right">
+          <img alt="{{ image.alt }}" src="{{ image | img_url: 'grande' }}" loading="lazy"/>
+        </div>
+      {% else %}
+        <div class="col-12 col-lg-6 card-img">
+          <img alt="{{ image.alt }}" src="{{ image | img_url: 'grande' }}" loading="lazy"/>
+        </div>
+        <div class="col-12 col-lg-6 card-text right">
+          <div class="card-text-center">
+            <div class="text-left">
+              <h1>{{ title }}</h1>
+              {{ description }}
+            </div>
+            {% if ctaLink %}
+              <a class="action-btn" href="{{ ctaLink }}">{{ ctaText }}</a>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <style>
+    #card{{ id }} .card-img img {
+        width: {{ imageSize }}%;
+    }
+    #card{{ id }} .action-btn {
+        color: {{ ctaColor }};
+        border-color: {{ ctaColor }};
+    }
+    #card{{ id }} .action-btn:hover {
+        background-color: {{ ctaColor }};
+        color: {{ backgroundColor }};
+    }
+    #card{{ id }} .text-left {
+        color: {{ textColor }}
+    }
+    {% if gradientBackground != "" %}
+      #card{{ id }} {
+        background: {{ gradientBackground }}%;
+      }
+    {% endif %}
+  </style>
+</div>

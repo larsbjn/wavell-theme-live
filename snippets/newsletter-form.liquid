@@ -1,0 +1,38 @@
+{% form 'customer', class:'form-newsletter form-klaviyo js-klaviyo-form' %}
+  {% if form.posted_successfully? %}
+    <p><em>Tak for at deltage i vores mailing liste!</em></p>
+  {% elsif form.errors %}
+    {% for field in form.errors %}
+      <p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+    {% endfor %}
+  {% endif %}
+
+  <input type="hidden" name="contact[accepts_marketing]" value="true">
+  <div class="container newsletter-container">
+    <div class="row">
+      <div class="col-12 col-md-9">
+        <input type="email" required placeholder="Indtast din email adresse" id="mail" class="form-control" aria-label="Indtast din email adresse" autocorrect="off" autocapitalize="off" name="contact[email]" />
+      </div>
+      <div class="col-12 col-md-3">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-dark" name="subscribe" id="subscribe">Tilmeld</button>
+        </span>
+      </div>
+    </div>
+  </div>
+{% endform %}
+
+<style>
+  .newsletter-container div div {
+      padding: 0;
+  }
+  .newsletter-container input {
+      margin-top: 10px;
+  }
+  .newsletter-container button {
+    width: 100%;
+    margin-top: 10px;
+    background: #F92954;
+    border: 0 !important;
+  }
+</style>

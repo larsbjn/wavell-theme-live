@@ -1,0 +1,35 @@
+<h2>{{ section.settings.title }}</h2>
+<div class="d-flex justify-content-center flex-wrap">
+  {% for block in section.blocks %}
+    <img class="company-img" src="{{ block.settings.img | img_url: 'medium' }}" alt="{{ block.settings.img.alt }}"/>
+  {% endfor %}
+</div>
+{% schema %}
+{
+  "name": "Set I",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Set I"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "seen-in",
+      "name": "Logo",
+      "settings": [
+        {
+          "id": "img",
+          "type": "image_picker",
+          "label": "Logo for Set I"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,236 @@
+@import "core/variables";
+.product {
+  > div:not(:first-child), #shopify-section-card .card-container {
+    margin: 50px auto;
+  }
+
+  .header {
+    position: relative;
+    img {
+      width: 100%;
+      min-height: 50vh;
+      max-height: 100vh;
+      object-fit: cover;
+      object-position: center;
+    }
+    .overlay {
+      position: absolute;
+      top: 0px; left: 0px; right: 0; bottom: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  #previous-slide,
+  #next-slide {
+    font-size: 2em;
+    cursor: pointer;
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  .arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-image-slider-nav {
+    div {
+      padding: 5px;
+    }
+  }
+
+  .product-image-slider {
+    .slick-slide:first-child:before {
+      content: ' ';
+      background: url('https://i.imgur.com/lo6JIaP.png') no-repeat center center;
+      background-size: 60px 60px;
+      opacity: 1;
+      position: absolute;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      transform: translate(25px) rotate(5deg);
+      animation: swipeAnimation 4s forwards;
+      @keyframes swipeAnimation {
+        20%, 60%, 99% {
+          transform: translate(-50px) rotate(-10deg);
+          opacity: 1;
+        }
+        40%, 80% {
+          transform: translate(50px) rotate(10deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translate(-50px) rotate(-10deg);
+        }
+      }
+    }
+    opacity: 0;
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .slider-navigation-image {
+    text-align: center;
+    cursor: pointer;
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  .product-available {
+    color: $green;
+  }
+
+  .discounted,
+  .product-discount-percentage,
+  .product-soldout {
+    color: $red;
+  }
+
+  .product-information {
+    margin-top: 3vh;
+  }
+
+  .additional-sale {
+    * {
+      margin-right: 5px;
+    }
+    a {
+      color: $base-font-color;
+    }
+    img {
+      width: 75px;
+    }
+  }
+
+  #Quantity {
+    width: 15%;
+    display: inline-block;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    margin: 0 0.5rem 0 0;
+    -webkit-appearance: none;
+    text-align: center;
+  }
+
+  #AddToCart {
+    font-family: Futura, sans-serif;
+    text-transform: uppercase;
+    background: $accent-color;
+    color: white;
+    border: 0;
+    width: 100%;
+    margin: 0;
+    &:hover {
+      color: $accent-color;
+      background: white;
+    }
+  }
+
+  .description {
+    margin-top: 0.5rem;
+  }
+
+  .small-product-information {
+    text-align: center;
+    padding: 40px 0;
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin: 10px auto;
+    }
+  }
+
+  .arBtn {
+    margin-bottom: .5rem;
+    color: white;
+    background-color: $accent-color;
+  }
+
+  .modal {
+    .modal-dialog {
+      max-width: 100vw;
+      margin: 0;
+      .modal-header {
+        .modal-title {
+          line-height: 2.5rem;
+        }
+        button {
+          font-size: 2rem;
+        }
+      }
+      .modal-body {
+        padding: 0;
+        model-viewer {
+          width: 100vw;
+          height: 75vh;
+        }
+      }
+    }
+  }
+
+  .facts {
+    text-align: center;
+    .facts-dropdown{
+      margin-top: 30px;
+    }
+    .accordion {
+      text-align: left;
+    }
+  }
+}
+
+@media all and (min-width: 992px) {
+  .product {
+    > div:not(:first-child), #shopify-section-card .card-container {
+      margin: 60px auto;
+    }
+    .product-image-slider {
+      .slick-slide:first-child:before {
+        animation: none;
+        transform: none;
+        background: none;
+        display: none;
+      }
+    }
+    #Quantity {
+      width: 10%;
+    }
+
+    .modal {
+      .modal-dialog {
+        margin: 1.75rem auto;
+        width: 80vw;
+        max-width: 1180px;
+        .modal-body {
+          padding: 0;
+          model-viewer {
+            width: 80vw;
+            max-width: 1180px;
+            height: 80vh;
+          }
+        }
+      }
+    }
+
+    .facts {
+      text-align: left;
+      .facts-dropdown{
+        margin-top: 0;
+      }
+    }
+  }
+}

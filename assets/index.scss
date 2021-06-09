@@ -1,0 +1,127 @@
+@import "core/variables";
+
+.index {
+  > div:not(:first-child), #shopify-section-card-for-index .card-container {
+    margin: 50px auto;
+  }
+  #top-banner {
+    text-align: center;
+    #title {
+      opacity: 0;
+      text-align: center;
+      width: 100%;
+      font-size: 5em;
+      letter-spacing: 10px;
+      margin-bottom: 0;
+      line-height: normal;
+    }
+
+    img {
+      opacity: 0;
+      max-width: 1180px;
+    }
+
+    a {
+      text-transform: uppercase;
+      opacity: 0;
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+    }
+  }
+
+  .news {
+    .blue-card {
+      padding-bottom: 30px;
+    }
+  }
+
+  .trustpilot-widget {
+    text-align: center;
+    margin: 80px 0 !important;
+  }
+
+  .highlighted-products {
+    a {
+      border-color: $accent-color;
+      color: $accent-color;
+      margin: 0 auto;
+      &:hover {
+        background: $accent-color;
+        color: white;
+      }
+    }
+  }
+
+  .seen-in {
+    h2 {
+      text-align: center;
+      margin: 20px 0;
+      //color: #C6C6CC;
+    }
+    .company-img {
+      height: 25px;
+      margin: 10px;
+    }
+  }
+
+  .blue-project, .brand {
+    .blue-project-card, .brand-card {
+      margin-bottom: 30px;
+    }
+    h4 {
+      color: $base-font-color;
+    }
+  }
+}
+
+@media all and (min-width: 992px) {
+  nav {
+    background: rgba(235, 235, 235, 0);
+  }
+  .index {
+    > div:not(:first-child) {
+      margin: 60px auto;
+    }
+
+    .highlighted-products {
+      display: block;
+      .product-tile {
+        img {
+          -webkit-transition: 0.15s transform ease-in-out;
+          -moz-transition: 0.15s transform ease-in-out;
+          -ms-transition: 0.15s transform ease-in-out;
+          -o-transition: 0.15s transform ease-in-out;
+          transition: 0.15s transform ease-in-out;
+        }
+        &:hover {
+          img {
+            transform: translateY(-5px);
+          }
+        }
+      }
+    }
+
+    .blue-project, .brand {
+      .card {
+        -webkit-transition: 0.15s transform ease-in-out;
+        -moz-transition: 0.15s transform ease-in-out;
+        -ms-transition: 0.15s transform ease-in-out;
+        -o-transition: 0.15s transform ease-in-out;
+        transition: 0.15s transform ease-in-out;
+      }
+      &:hover {
+        .card {
+          transform: translateY(-5px);
+        }
+      }
+    }
+
+    .seen-in {
+      .company-img {
+        height: 35px;
+        margin: 20px;
+      }
+    }
+  }
+}

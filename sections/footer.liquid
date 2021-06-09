@@ -1,0 +1,124 @@
+<footer>
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <h6>{{ section.settings.newsletterText }}</h6>
+          {%  render 'newsletter-form' %}
+        </div>
+        <div class="col-12 col-md-6 social">
+          <h5 class="social-title semi-bold">Følg os</h5>
+          <ul class="social-icons inline-list">
+            <li>
+              <a href="{{ section.settings.someInstagram }}" title="Wavell on Instagram" target="_blank" itemprop="sameAs">
+                <i class="bi-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{ section.settings.someYoutube }}" title="Wavell on Youtube" target="_blank" itemprop="sameAs">
+                <i class="bi-youtube"></i>
+              </a>
+            </li>
+            <li>
+              <a href="{{ section.settings.someFacebook }}" title="Wavell on Facebook" target="_blank" itemprop="sameAs">
+                <i class="bi-facebook"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="row desktop-links">
+        {% for link in linklists.footer-menu.links %}
+          {% assign child_list_handle = link.title | handleize %}
+          <div class="col">
+            <h5>{{ link.title }}</h5>
+            <ul>
+              {% for childlink in linklists[child_list_handle].links %}
+                <a href="{{ childlink.url }}">
+                  <li>{{ childlink.title }}</li>
+                </a>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+        <div class="col">
+          {% render 'legal-information', legalText: section.settings.legalText, legalLink: section.settings.legalLink %}
+        </div>
+      </div>
+      <div class="row mobile-links">
+        {% for link in linklists.footer-menu.links %}
+          {% assign child_list_handle = link.title | handleize %}
+          <div class="col">
+            <button class="collapse-btn reset-margin reset-padding" type="button" data-toggle="collapse" data-target="#{{ link.title }}Collapse" aria-expanded="false" aria-controls="collapseExample">
+              <i class="bi-chevron-down"></i>
+              {{ link.title }}
+            </button>
+            <div class="collapse" id="{{ link.title }}Collapse">
+              <ul>
+                {% for childlink in linklists[child_list_handle].links %}
+                  <a href="{{ childlink.url }}">
+                    <li>{{ childlink.title }}</li>
+                  </a>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="col">
+          {% render 'legal-information', legalText: section.settings.legalText, legalLink: section.settings.legalLink %}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Juridisk"
+    },
+    {
+      "id": "legalLink",
+      "type": "url",
+      "label": "Link til juridisk"
+    },
+    {
+      "id": "legalText",
+      "type": "textarea",
+      "label": "Juridisk tekst",
+      "default": "CVR: 40641327 <br/> WAVELL DISTRIBUTION APS <br/> EGEBÆKSVEJ 14, 8270 HØJBJERG"
+    },
+    {
+      "type": "header",
+      "content": "Nyhedsbrev"
+    },
+    {
+      "id": "newsletterText",
+      "type": "textarea",
+      "label": "Nyhedsbrev tekst",
+      "default": "Tilmeld dig vores nyhedsbrev og modtag de seneste nyheder, tilbud samt andre fordele direkte i din indbakke fra os."
+    },
+    {
+      "type": "header",
+      "content": "Social Media Links"
+    },
+    {
+      "id": "someInstagram",
+      "type": "url",
+      "label": "Instagram link"
+    },
+    {
+      "id": "someYoutube",
+      "type": "url",
+      "label": "Youtube link"
+    },
+    {
+      "id": "someFacebook",
+      "type": "url",
+      "label": "Facebook link"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,61 @@
+@import "core/variables";
+@import "core/fonts";
+@import "core/common";
+
+/* Body */
+body {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bebas Neue", sans-serif !important;
+  }
+  * {
+    &:focus {
+      outline: none !important;
+    }
+  }
+  color: $base-font-color;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-family: "Josefin Sans", sans-serif !important;
+  background: $base-background-color;
+  a {
+    color: $accent-color;
+    &:hover {
+      color: $accent-color-hover;
+      cursor: pointer;
+      text-decoration: none;
+    }
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.form-control {
+  border-radius: 2px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+label {
+  margin: 0;
+}
+
+@import "core/collection";
+@import "core/cart";
+@import "core/navigation";
+@import "core/footer";
+
+/* Media Queries */
+@import "core/media-queries";

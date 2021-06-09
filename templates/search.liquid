@@ -1,0 +1,49 @@
+<div class="search">
+  {% paginate search.results by 4 %}
+    <form action="/search" method="get" role="search">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h1 class="text-center">Søg</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-lg-4 offset-lg-3">
+            <input class="form-control" placeholder="Høretelefoner, højtaler, accessories..." type="search" name="q" value="{{ search.terms | escape }}">
+          </div>
+          <div class="col-12 col-lg-2">
+            <button class="btn action-btn search-btn" type="submit"><i class="cart-icon bi bi-search"></i> Søg</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="container">
+      {% if search.performed %}
+        <div class="row">
+          {% for item in search.results %}
+              <div class="col-12 col-lg-6">
+                {% if item.featured_image %}
+                  <a href="{{ item.url | within: collection }}" title="{{ item.title | escape }}">
+                    {{ item.featured_image.src | img_url: 'medium' | img_tag: item.featured_image.alt }}
+                  </a>
+                {% endif %}
+                <h4>{{ item.title | link_to: item.url }}</h4>
+                <p>{{ item.content | strip_html | truncatewords: 50 }}</p>
+                <hr/>
+              </div>
+          {% else %}
+            <div class="col-12">
+              <h5>Ingen resultater</h5>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+      <div class="row">
+        <div class="col">
+          {% if paginate.pages > 1 %}{{ paginate | default_pagination }}{% endif %}
+        </div>
+      </div>
+    </div>
+
+  {% endpaginate %}
+</div>

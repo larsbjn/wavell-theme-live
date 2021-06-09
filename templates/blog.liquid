@@ -1,0 +1,28 @@
+
+<div class="blog">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ blog.title }}</h1>
+      </div>
+    </div>
+    {% paginate blog.articles by 5 %}
+      <div class="row">
+        {% for article in blog.articles %}
+          <div class="col-12 col-lg-6 item">
+            <img src="{{ article.image.src | img_url: 'grande' }}" alt="{{ article.image.alt }}"/>
+            <div class="info">
+              <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
+            </div>
+            <hr/>
+          </div>
+        {% endfor %}
+
+        {% if paginate.pages > 1 %}
+          {{ paginate | default_pagination }}
+        {% endif %}
+
+      </div>
+    {% endpaginate %}
+  </div>
+</div>

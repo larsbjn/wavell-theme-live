@@ -1,0 +1,185 @@
+{% for block in section.blocks %}
+  {% if block.settings.product-handle == product.handle %}
+    <div class="header" style="background-color: {{ block.settings.backgroundColor }};">
+      {% if block.settings.backgroundImage and block.settings.backgroundImageMobile %}
+        <img class="d-none d-lg-block" alt="{{ block.settings.backgroundImage.alt }}"
+             src="{{ block.settings.backgroundImage | img_url: 'master' }}" loading="lazy"/>
+        <img class="d-lg-none" alt="{{ block.settings.backgroundImageMobile.alt }}"
+             src="{{ block.settings.backgroundImageMobile | img_url: 'master' }}" loading="lazy"/>
+      {% elsif block.settings.backgroundImage %}
+        <img alt="{{ block.settings.backgroundImage.alt }}"
+             src="{{ block.settings.backgroundImage | img_url: 'master' }}" loading="lazy"/>
+      {% elsif block.settings.backgroundImageMobile %}
+        <img alt="{{ block.settings.backgroundImageMobile.alt }}"
+             src="{{ block.settings.backgroundImageMobile | img_url: 'master' }}" loading="lazy"/>
+      {% else %}
+        <style>
+            .header {
+                padding: 30vh 0;
+            }
+        </style>
+      {% endif %}
+      <div class="overlay">
+        <h1>{{ block.settings.title }}</h1>
+        <h5>{{ block.settings.subTitle }}</h5>
+        {% if block.settings.ctaText != "" %}
+          <a href="{% if block.settings.ctaScrollToBuy %}#product-details"{% else %}{% if block.settings.ctaLink  %}{{ block.settings.ctaLink }}"{% endif %}
+            {% endif %}
+            class="action-btn">
+            {{ block.settings.ctaText }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+    {% style %}
+      .header {
+        color: {{ block.settings.textColor }};
+      }
+      .header .overlay {
+        left: {{ block.settings.paddingLeft }}px !important;
+        right: {{ block.settings.paddingRight }}px !important;
+        top: {{ block.settings.paddingTop }}px !important;
+        bottom: {{ block.settings.paddingBottom }}px !important;
+      }
+      .header .action-btn {
+        margin-top: 15px;
+        color: {{ block.settings.ctaColor }};
+        border-color: {{ block.settings.ctaColor }};
+      }
+      .header .action-btn:hover {
+        background-color: {{ block.settings.ctaColor }};
+        color: {{ block.settings.textColor }};
+      }
+    {% endstyle %}
+  {% endif %}
+{% endfor %}
+
+
+{% schema %}
+{
+"name": "Headers",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tilføj en blok for hvert produkt"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "header",
+      "name": "Product page",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Vælg produktet herunder, dette bestemmer hvilket produkt header skal vises på."
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-handle"
+        },
+        {
+          "type": "header",
+          "content": "Tekst og baggrundbillede/farve",
+          "info": "Efterlad billede tom, hvis baggrundsfarven skal bruges"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title"
+        },
+        {
+          "type": "text",
+          "label": "Indtast sub-overskrift",
+          "id": "subTitle"
+        },
+        {
+          "type": "color",
+          "label": "Tekst farve",
+          "id": "textColor",
+          "default": "#ffffff"
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg baggrundsbillede for desktop",
+          "id": "backgroundImage"
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg baggrundsbillede for mobil",
+          "id": "backgroundImageMobile"
+        },
+        {
+          "type": "color",
+          "label": "Baggrundsfarve",
+          "id": "backgroundColor",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Call to Action",
+          "info": "Omhandler Call to Action knappen. Efterlad tom hvis den ikke skal vises."
+        },
+        {
+          "type": "url",
+          "label": "Call to action link",
+          "info": "Link til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaLink"
+        },
+        {
+          "type": "checkbox",
+          "id": "ctaScrollToBuy",
+          "label": "CTA til købssektion",
+          "default": false,
+          "info": "Skal tjekkes af hvis Call To Action knappen skal føre til købssektionen. (Overskriver et evt. givet CTA link)"
+        },
+        {
+          "type": "text",
+          "label": "Call to action tekst",
+          "info": "Tekst til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaText"
+        },
+        {
+          "type": "color",
+          "label": "Call to action farve",
+          "id": "ctaColor",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Position",
+          "info": "Rykker billedet i pixels, pas meget på da det ikke er dynamisk. Anbefalet kun at rykke lidt op og ned, kan dog højre og venstre"
+        },
+        {
+          "type": "number",
+          "label": "Top mellemrum",
+          "info": "Rykker content længere væk fra toppen",
+          "id": "paddingTop",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Bund mellemrum",
+          "info": "Rykker content længere væk fra bunden",
+          "id": "paddingBottom",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Venstre mellemrum",
+          "info": "Rykker content længere væk fra venstre",
+          "id": "paddingLeft",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Højre mellemrum",
+          "info": "Rykker content længere væk fra højre",
+          "id": "paddingRight",
+          "default": 0
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

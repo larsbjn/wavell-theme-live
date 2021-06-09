@@ -1,0 +1,104 @@
+<div class="accordion" id="{{ prefix }}accordionExample">
+  {% if title2 != '' %}
+    <div class="card">
+      <div class="" id="heading1">
+        <h2 class="mb-0">
+          <button class="btn collapsed dropdown-btn" type="button" data-toggle="collapse" data-target="#{{ prefix }}collapse1" aria-expanded="false" aria-controls="collapse1">
+            <i class="bi-chevron-down"></i>
+            {{ title1 }}
+          </button>
+        </h2>
+      </div>
+      <div id="{{ prefix }}collapse1" class="collapse" aria-labelledby="heading1" data-parent="#{{ prefix }}accordionExample">
+        <div class="card-body">
+          {{ body1 }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if title2 != '' %}
+    <div class="card">
+      <div class="" id="heading2">
+        <h2 class="mb-0">
+          <button class="btn collapsed dropdown-btn" type="button" data-toggle="collapse" data-target="#{{ prefix }}collapse2" aria-expanded="false" aria-controls="collapse2">
+            <i class="bi-chevron-down"></i>
+            {{ title2 }}
+          </button>
+        </h2>
+      </div>
+      <div id="{{ prefix }}collapse2" class="collapse" aria-labelledby="heading2" data-parent="#{{ prefix }}accordionExample">
+        <div class="card-body">
+          {{ body2 }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if title3 != '' %}
+    <div class="card">
+      <div class="" id="heading3">
+        <h2 class="mb-0">
+          <button class="btn collapsed dropdown-btn" type="button" data-toggle="collapse" data-target="#{{ prefix }}collapse3" aria-expanded="false" aria-controls="collapse3">
+            <i class="bi-chevron-down"></i>
+            {{ title3 }}
+          </button>
+        </h2>
+      </div>
+      <div id="{{ prefix }}collapse3" class="collapse" aria-labelledby="heading3" data-parent="#{{ prefix }}accordionExample">
+        <div class="card-body">
+          {{ body3 }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if title4 != '' %}
+    <div class="card">
+      <div class="" id="heading4">
+        <h2 class="mb-0">
+          <button class="btn collapsed dropdown-btn" type="button" data-toggle="collapse" data-target="#{{ prefix }}collapse4" aria-expanded="false" aria-controls="collapse4">
+            <i class="bi-chevron-down"></i>
+            {{ title4 }}
+          </button>
+        </h2>
+      </div>
+      <div id="{{ prefix }}collapse4" class="collapse" aria-labelledby="heading4" data-parent="#{{ prefix }}accordionExample">
+        <div class="card-body">
+          {{ body4 }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if title5 != '' %}
+    <div class="card">
+      <div class="" id="heading5">
+        <h2 class="mb-0">
+          <button class="btn collapsed dropdown-btn" type="button" data-toggle="collapse" data-target="#{{ prefix }}collapse5" aria-expanded="false" aria-controls="collapse5">
+            <i class="bi-chevron-down"></i>
+            {{ title5 }}
+          </button>
+        </h2>
+      </div>
+      <div id="{{ prefix }}collapse5" class="collapse" aria-labelledby="heading5" data-parent="#{{ prefix }}accordionExample">
+        <div class="card-body">
+          {{ body5 }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if title6 != '' %}
+    <div class="card">
+      <div class="" id="heading6">
+        <h2 class="mb-0">
+          <button class="btn collapsed dropdown-btn" type="button" data-toggle="collapse" data-target="#{{ prefix }}collapse6" aria-expanded="false" aria-controls="collapse6">
+            <i class="bi-chevron-down"></i>
+            {{ title6 }}
+          </button>
+        </h2>
+      </div>
+      <div id="{{ prefix }}collapse6" class="collapse" aria-labelledby="heading6" data-parent="#{{ prefix }}accordionExample">
+        <div class="card-body">
+          {{ body6 }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>

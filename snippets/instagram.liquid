@@ -1,0 +1,26 @@
+<div class="instagram">
+    <h4>Følg os på Instagram <a href="https://www.instagram.com/wavell_dk/" target="_blank">@wavell_dk</a></h4>
+    <div id="instagram-feed" class="container">
+        <div class="row"></div>
+    </div>
+</div>
+
+<script>
+  (function($){
+    $(window).on('load', function(){
+      $.instagramFeed({
+        'username': 'wavell_dk',
+        'max_tries': 8,
+        'callback': function (data) {
+          for (let i = 0; i < 8; i++) {
+            let url = data.edge_owner_to_timeline_media.edges[i].node.display_url;
+            let link = data.edge_owner_to_timeline_media.edges[i].node.shortcode;
+            $('#instagram-feed .row').append(`<div class='col-6 col-lg-3'><div class="instagram-container"><a href=https://instagram.com/p/${link} target="_blank"><img class="instagram-photo" loading=lazy src=${url} /><div style="width:99%;height:99%;" class="instafeed-overlay "></div></a></div></div>`);
+          }
+        },
+        'host': 'https://images' + ~~(Math.random() * 3333) + '-focus-opensocial.googleusercontent.com/gadgets/proxy?container=none&url=https://www.instagram.com/',
+        'on_error': function (error_description, error_code) {} // Disabled error log for now
+      });
+    });
+  })(jQuery);
+</script>

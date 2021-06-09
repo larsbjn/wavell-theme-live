@@ -1,0 +1,43 @@
+<div class="container fact-box">
+  <div class="row">
+    {% for block in section.blocks %}
+      <div class="col-6 col-md-2">
+        <i class="bi-{{ block.settings.icon }}"></i>
+        <p>
+          {{ block.settings.text }}
+        </p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Wavell Fakta",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Wavell Fakta"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fact",
+      "name": "Fakta",
+      "settings": [
+        {
+          "id": "icon",
+          "type": "text",
+          "label": "Ikon for fakta",
+          "info": "Gå ind på https://icons.getbootstrap.com/ og find det ikon der skal bruges, og skriv navnet der står nedenunder her"
+        },
+        {
+          "id": "text",
+          "type": "text",
+          "label": "Fakta tekst"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

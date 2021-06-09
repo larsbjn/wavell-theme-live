@@ -1,0 +1,42 @@
+<div class="contact">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ page.title }}</h1>
+      </div>
+    </div>
+    <div class="row">
+      {% form 'contact' %}
+        {% if form.posted_successfully? %} Tak for dit spørgsmål! {% endif %}
+        {{ form.errors | default_errors }}
+        <div class="col-12 col-lg-6 offset-lg-3">
+          <div class="form-group">
+            <label for="ContactFormName">Navn</label>
+            <input class="form-control" type="text" id="ContactFormName" name="contact[name]">
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 offset-lg-3">
+          <div class="form-group">
+            <label for="ContactFormEmail">E-mail</label>
+            <input class="form-control" type="email" id="ContactFormEmail" name="contact[email]">
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 offset-lg-3">
+          <div class="form-group">
+            <label for="ContactFormPhone">Telefonnummer</label>
+            <input class="form-control" type="tel" id="ContactFormPhone" name="contact[phone]">
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 offset-lg-3">
+          <div class="form-group">
+            <label for="ContactFormMessage">Besked</label>
+            <textarea class="form-control" rows="10" id="ContactFormMessage" name="contact[body]"></textarea>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 offset-lg-3">
+          <input class="form-control action-btn" type="submit" value="Send">
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</div>

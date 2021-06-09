@@ -1,0 +1,232 @@
+<div id="top-banner" class="full-screen-container">
+  <h1 id="title">{{ section.settings.title }}</h1>
+
+  {% if section.settings.imageMobile and section.settings.imageDesktop %}
+  <img class="d-block d-lg-none mobile-img" src="{{ section.settings.imageMobile | img_url: 'master' }}" alt="{{ section.settings.imageMobile.alt }}"/>
+  <img class="d-none d-lg-block desktop-img" src="{{ section.settings.imageDesktop | img_url: 'master' }}" alt="{{ section.settings.imageDesktop.alt }}"/>
+  {% elsif section.settings.imageMobile %}
+  <img class="mobile-img" src="{{ section.settings.imageMobile | img_url: 'master' }}" alt="{{ section.settings.imageMobile.alt }}"/>
+  {% elsif section.settings.imageDesktop %}
+  <img class="desktop-img" src="{{ section.settings.imageDesktop | img_url: 'master' }}" alt="{{ section.settings.imageDesktop.alt }}"/>
+  {% endif %}
+  <br/>
+  {% if section.settings.ctaText != "" %}
+    <a class="action-btn" href="{{ section.settings.ctaLink }}">{{ section.settings.ctaText }}</a>
+  {% endif %}
+</div>
+<style>
+  #top-banner h1 {
+      color: {{ section.settings.textColor }};
+      padding-top: {{ section.settings.titleMarginMobile }}vh;
+  }
+  @media all and (min-width: 992px) {
+      #top-banner h1 {
+          padding-top: {{ section.settings.titleMarginDesktop }}vh;
+      }
+  }
+  #top-banner .mobile-img {
+      width: {{ section.settings.imageSizeMobile }}%;
+      margin: {{ section.settings.imageMarginMobile }}vh auto;
+  }
+  #top-banner .desktop-img {
+      width: {{ section.settings.imageSizeDesktop }}%;
+      margin: {{ section.settings.imageMarginDesktop }}vh auto;
+  }
+  #top-banner {
+  {% if section.settings.backgroundGradient == "" %}
+      background: {{ section.settings.backgroundColor }};
+  {% else %}
+      background: {{ section.settings.backgroundGradient }};
+  {% endif %}
+  }
+  {% if section.settings.backgroundImageDesktop and section.settings.backgroundImageMobile  %}
+    #top-banner {
+        background-image: url("{{ section.settings.backgroundImageMobile | img_url: 'master' }}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    @media all and (min-width: 992px) {
+        #top-banner {
+          background-image: url("{{ section.settings.backgroundImageDesktop | img_url: 'master' }}");
+        }
+    }
+  {% elsif section.settings.backgroundImageDesktop %}
+    #top-banner {
+        background-image: url("{{ section.settings.backgroundImageDesktop | img_url: 'master' }}");
+    }
+  {% elsif section.settings.backgroundImageMobile %}
+    #top-banner {
+        background-image: url("{{ section.settings.backgroundImageMobile | img_url: 'master' }}");
+    }
+  {% endif %}
+  #top-banner .action-btn {
+      color: {{ section.settings.ctaColor }};
+      border-color: {{ section.settings.ctaColor }};
+  }
+  #top-banner .action-btn:hover {
+      color: {{ section.settings.ctaColorHover }};
+      background-color: {{ section.settings.ctaColor }};
+  }
+</style>
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Overskrift"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Overskrift"
+    },
+    {
+      "type": "color",
+      "label": "Overskrift tekst farve",
+      "id": "textColor",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Desktop"
+    },
+    {
+      "type": "image_picker",
+      "label": "Vælg desktop billede",
+      "id": "imageDesktop"
+    },
+    {
+      "type": "range",
+      "id": "imageSizeDesktop",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Billede størrelse på desktop",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "titleMarginDesktop",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "vh",
+      "label": "Mellemrum mellem overskrift og navigationsbar på desktop",
+      "info": "Dette er i procent i forhold til skærmensstørrelse, så 3vh svarer til 3% af den fulde skærms højde",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "imageMarginDesktop",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "vh",
+      "label": "Mellemrum mellem billede og tekst på desktop",
+      "info": "Dette er i procent i forhold til skærmensstørrelse, så 3vh svarer til 3% af den fulde skærms højde",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Mobil"
+    },
+    {
+      "type": "image_picker",
+      "label": "Vælg mobil billede",
+      "id": "imageMobile"
+    },
+    {
+      "type": "range",
+      "id": "imageSizeMobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Billede størrelse på mobil",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "titleMarginMobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "vh",
+      "label": "Mellemrum mellem overskrift og navigationsbar på desktop",
+      "info": "Dette er i procent i forhold til skærmensstørrelse, så 3vh svarer til 3% af den fulde skærms højde",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "imageMarginMobile",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "vh",
+      "label": "Mellemrum mellem billede og tekst på mobile",
+      "info": "Dette er i procent i forhold til skærmensstørrelse, så 3vh svarer til 3% af den fulde skærms højde",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Baggrund",
+      "info": "Der følger et hierarki som er følgende: statisk baggrundsfarve < gradient baggrund < baggrundsbilleder. Så hvis man laver et baggrundsbillede, så trumfer det alt andet."
+    },
+    {
+      "type": "color",
+      "label": "Baggrundsfarve",
+      "id": "backgroundColor",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "label": "Gradient baggrund",
+      "info": "Brug: https://cssgradient.io/ til at lave gradient baggrunde, og kopier koden ind i dette tekstfelt. Efterlad tom hvis normal baggrund skal bruges.",
+      "id": "backgroundGradient"
+    },
+    {
+      "type": "image_picker",
+      "label": "Vælg desktop baggrundsbillede",
+      "id": "backgroundImageDesktop"
+    },
+    {
+      "type": "image_picker",
+      "label": "Vælg mobil baggrundsbillede",
+      "id": "backgroundImageMobile"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action knap"
+    },
+    {
+      "type": "url",
+      "label": "Call to action link",
+      "info": "Link til call to action, efterlad tom hvis den ikke skal vises",
+      "id": "ctaLink"
+    },
+    {
+      "type": "text",
+      "label": "Call to action tekst",
+      "info": "Tekst til call to action, efterlad tom hvis den ikke skal vises",
+      "id": "ctaText"
+    },
+    {
+      "type": "color",
+      "label": "Call to action tekst og kant farve",
+      "info": "Denne farve bliver også baggrundsfarven når man holder henover knappen",
+      "id": "ctaColor",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "label": "Call to action hover farve",
+      "info": "Den farve teksten skal blive når man holder over knappen",
+      "id": "ctaColorHover",
+      "default": "#000000"
+    }
+  ]
+}
+{% endschema %}

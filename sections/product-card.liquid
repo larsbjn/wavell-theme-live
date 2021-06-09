@@ -1,0 +1,497 @@
+<div class="card-in-row">
+
+  {% for block in section.blocks %}
+    {% if block.settings.product-handle == product.handle %}
+      {% if block.settings.description1 and block.settings.image1 %}
+        {% render 'card', rightStyle: block.settings.rightStyle1, title: block.settings.title1,
+                description: block.settings.description1, image: block.settings.image1,
+                paddingTop: block.settings.paddingTop1, paddingBottom: block.settings.paddingBottom1,
+                paddingLeft: block.settings.paddingLeft1, paddingRight: block.settings.paddingRight1,
+                backgroundColor: block.settings.backgroundColor1, ctaLink: block.settings.ctaLink1,
+                ctaText: block.settings.ctaText1, ctaColor: block.settings.ctaColor1,
+                textColor: block.settings.textColor1, id: "card1", imageSize: block.settings.imageSize1,
+                gradientBackground: block.settings.gradientBackground1
+        %}
+      {% endif %}
+      {% if block.settings.description2 and block.settings.image2 %}
+        {% render 'card', rightStyle: block.settings.rightStyle2, title: block.settings.title2,
+            description: block.settings.description2, image: block.settings.image2,
+            paddingTop: block.settings.paddingTop2, paddingBottom: block.settings.paddingBottom2,
+            paddingLeft: block.settings.paddingLeft2, paddingRight: block.settings.paddingRight2,
+            backgroundColor: block.settings.backgroundColor2, ctaLink: block.settings.ctaLink2,
+            ctaText: block.settings.ctaText2, ctaColor: block.settings.ctaColor2,
+            textColor: block.settings.textColor2, id: "card2", imageSize: block.settings.imageSize2,
+            gradientBackground: block.settings.gradientBackground2
+        %}
+      {% endif %}
+      {% if block.settings.description3 and block.settings.image3 %}
+        {% render 'card', rightStyle: block.settings.rightStyle3, title: block.settings.title3,
+                description: block.settings.description3, image: block.settings.image3,
+                paddingTop: block.settings.paddingTop3, paddingBottom: block.settings.paddingBottom3,
+                paddingLeft: block.settings.paddingLeft3, paddingRight: block.settings.paddingRight3,
+                backgroundColor: block.settings.backgroundColor3, ctaLink: block.settings.ctaLink3,
+                ctaText: block.settings.ctaText3, ctaColor: block.settings.ctaColor3,
+                textColor: block.settings.textColor3, id: "card3", imageSize: block.settings.imageSize3,
+                gradientBackground: block.settings.gradientBackground3
+        %}
+      {% endif %}
+      {% if block.settings.description4 and block.settings.image4 %}
+        {% render 'card', rightStyle: block.settings.rightStyle4, title: block.settings.title4,
+                description: block.settings.description4, image: block.settings.image4,
+                paddingTop: block.settings.paddingTop4, paddingBottom: block.settings.paddingBottom4,
+                paddingLeft: block.settings.paddingLeft4, paddingRight: block.settings.paddingRight4,
+                backgroundColor: block.settings.backgroundColor4, ctaLink: block.settings.ctaLink4,
+                ctaText: block.settings.ctaText4, ctaColor: block.settings.ctaColor4,
+                textColor: block.settings.textColor4, id: "card4", imageSize: block.settings.imageSize4,
+                gradientBackground: block.settings.gradientBackground4
+        %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tilføj en blok for hvert produkt"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "cards",
+      "name": "Product page",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Vælg produktet herunder, dette bestemmer hvilket produkt disse cards skal vises på."
+        },
+        {
+        "type": "product",
+        "label": "Product",
+        "id": "product-handle"
+        },
+        {
+          "type": "header",
+          "content": "Card 1"
+        },
+        {
+          "type": "paragraph",
+          "content": "Efterlad et card tomt, hvis det ikke skal vises. Kræver både et billede og en beskrivelse."
+        },
+        {
+          "type": "checkbox",
+          "id": "rightStyle1",
+          "label": "Billede til højre",
+          "default": false,
+          "info": "Skal tjekkes af hvis billede skal være til højre og nederst på mobil"
+        },
+        {
+        "type": "text",
+        "label": "Indtast overskrift",
+        "id": "title1"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast beskrivelse",
+          "id": "description1"
+        },
+        {
+          "type": "color",
+          "label": "Beskrivelse tekst farve",
+          "id": "textColor1",
+          "default": "#000000"
+        },
+        {
+          "type": "number",
+          "label": "Top mellemrum",
+          "info": "Mellemrum mellem toppen og content",
+          "id": "paddingTop1",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Bund mellemrum",
+          "info": "Mellemrum mellem bunden og content",
+          "id": "paddingBottom1",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Venstre mellemrum",
+          "info": "Mellemrum mellem venstre og content",
+          "id": "paddingLeft1",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Højre mellemrum",
+          "info": "Mellemrum mellem højre og content",
+          "id": "paddingRight1",
+          "default": 0
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede",
+          "id": "image1"
+        },
+        {
+          "type": "range",
+          "id": "imageSize1",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Image size",
+          "default": 100
+        },
+        {
+          "type": "color",
+          "label": "Baggrundsfarve",
+          "id": "backgroundColor1",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "label": "Gradient baggrund",
+          "info": "Brug: https://cssgradient.io/ til at lave gradient baggrunde, og kopier koden ind i dette tekstfelt. Efterlad tom hvis normal baggrund skal bruges.",
+          "id": "gradientBackground1"
+        },
+        {
+          "type": "url",
+          "label": "Call to action link",
+          "info": "Link til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaLink1"
+        },
+        {
+          "type": "text",
+          "label": "Call to action tekst",
+          "info": "Tekst til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaText1"
+        },
+        {
+          "type": "color",
+          "label": "Call to action farve",
+          "id": "ctaColor1",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Card 2"
+        },
+        {
+          "type": "paragraph",
+          "content": "Efterlad et card tomt, hvis det ikke skal vises. Kræver både et billede og en beskrivelse."
+        },
+        {
+          "type": "checkbox",
+          "id": "rightStyle2",
+          "label": "Billede til højre",
+          "default": false,
+          "info": "Skal tjekkes af hvis billede skal være til højre og nederst på mobil"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title2"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast beskrivelse",
+          "id": "description2"
+        },
+        {
+          "type": "color",
+          "label": "Beskrivelse tekst farve",
+          "id": "textColor2",
+          "default": "#000000"
+        },
+        {
+          "type": "number",
+          "label": "Top mellemrum",
+          "info": "Mellemrum mellem toppen og content",
+          "id": "paddingTop2",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Bund mellemrum",
+          "info": "Mellemrum mellem bunden og content",
+          "id": "paddingBottom2",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Venstre mellemrum",
+          "info": "Mellemrum mellem venstre og content",
+          "id": "paddingLeft2",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Højre mellemrum",
+          "info": "Mellemrum mellem højre og content",
+          "id": "paddingRight2",
+          "default": 0
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede",
+          "id": "image2"
+        },
+        {
+          "type": "range",
+          "id": "imageSize2",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Image size",
+          "default": 100
+        },
+        {
+          "type": "color",
+          "label": "Baggrundsfarve",
+          "id": "backgroundColor2",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "label": "Gradient baggrund",
+          "info": "Brug: https://cssgradient.io/ til at lave gradient baggrunde, og kopier koden ind i dette tekstfelt. Efterlad tom hvis normal baggrund skal bruges.",
+          "id": "gradientBackground2"
+        },
+        {
+          "type": "url",
+          "label": "Call to action link",
+          "info": "Link til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaLink2"
+        },
+        {
+          "type": "text",
+          "label": "Call to action tekst",
+          "info": "Tekst til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaText2"
+        },
+        {
+          "type": "color",
+          "label": "Call to action farve",
+          "id": "ctaColor2",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Card 3"
+        },
+        {
+          "type": "paragraph",
+          "content": "Efterlad et card tomt, hvis det ikke skal vises. Kræver både et billede og en beskrivelse."
+        },
+        {
+          "type": "checkbox",
+          "id": "rightStyle3",
+          "label": "Billede til højre",
+          "default": false,
+          "info": "Skal tjekkes af hvis billede skal være til højre og nederst på mobil"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title3"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast beskrivelse",
+          "id": "description3"
+        },
+        {
+          "type": "color",
+          "label": "Beskrivelse tekst farve",
+          "id": "textColor3",
+          "default": "#000000"
+        },
+        {
+          "type": "number",
+          "label": "Top mellemrum",
+          "info": "Mellemrum mellem toppen og content",
+          "id": "paddingTop3",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Bund mellemrum",
+          "info": "Mellemrum mellem bunden og content",
+          "id": "paddingBottom3",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Venstre mellemrum",
+          "info": "Mellemrum mellem venstre og content",
+          "id": "paddingLeft3",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Højre mellemrum",
+          "info": "Mellemrum mellem højre og content",
+          "id": "paddingRight3",
+          "default": 0
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede",
+          "id": "image3"
+        },
+        {
+          "type": "range",
+          "id": "imageSize3",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Image size",
+          "default": 100
+        },
+        {
+          "type": "color",
+          "label": "Baggrundsfarve",
+          "id": "backgroundColor3",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "label": "Gradient baggrund",
+          "info": "Brug: https://cssgradient.io/ til at lave gradient baggrunde, og kopier koden ind i dette tekstfelt. Efterlad tom hvis normal baggrund skal bruges.. Efterlad tom hvis normal baggrund skal bruges.",
+          "id": "gradientBackground3"
+        },
+        {
+          "type": "url",
+          "label": "Call to action link",
+          "info": "Link til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaLink3"
+        },
+        {
+          "type": "text",
+          "label": "Call to action tekst",
+          "info": "Tekst til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaText3"
+        },
+        {
+          "type": "color",
+          "label": "Call to action farve",
+          "id": "ctaColor3",
+          "default": "#ffffff"
+        },
+        {
+          "type": "header",
+          "content": "Card 4"
+        },
+        {
+          "type": "paragraph",
+          "content": "Efterlad et card tomt, hvis det ikke skal vises. Kræver både et billede og en beskrivelse."
+        },
+        {
+          "type": "checkbox",
+          "id": "rightStyle4",
+          "label": "Billede til højre",
+          "default": false,
+          "info": "Skal tjekkes af hvis billede skal være til højre og nederst på mobil"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift",
+          "id": "title4"
+        },
+        {
+          "type": "richtext",
+          "label": "Indtast beskrivelse",
+          "id": "description4"
+        },
+        {
+          "type": "color",
+          "label": "Beskrivelse tekst farve",
+          "id": "textColor4",
+          "default": "#000000"
+        },
+        {
+          "type": "number",
+          "label": "Top mellemrum",
+          "info": "Mellemrum mellem toppen og content",
+          "id": "paddingTop4",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Bund mellemrum",
+          "info": "Mellemrum mellem bunden og content",
+          "id": "paddingBottom4",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Venstre mellemrum",
+          "info": "Mellemrum mellem venstre og content",
+          "id": "paddingLeft4",
+          "default": 0
+        },
+        {
+          "type": "number",
+          "label": "Højre mellemrum",
+          "info": "Mellemrum mellem højre og content",
+          "id": "paddingRight4",
+          "default": 0
+        },
+        {
+          "type": "image_picker",
+          "label": "Vælg billede",
+          "id": "image4"
+        },
+        {
+          "type": "range",
+          "id": "imageSize4",
+          "min": 1,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Image size",
+          "default": 100
+        },
+        {
+          "type": "color",
+          "label": "Baggrundsfarve",
+          "id": "backgroundColor4",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "label": "Gradient baggrund",
+          "info": "Brug: https://cssgradient.io/ til at lave gradient baggrunde, og kopier koden ind i dette tekstfelt. Efterlad tom hvis normal baggrund skal bruges.. Efterlad tom hvis normal baggrund skal bruges.",
+          "id": "gradientBackground4"
+        },
+        {
+          "type": "url",
+          "label": "Call to action link",
+          "info": "Link til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaLink4"
+        },
+        {
+          "type": "text",
+          "label": "Call to action tekst",
+          "info": "Tekst til call to action, efterlad tom hvis den ikke skal vises",
+          "id": "ctaText4"
+        },
+        {
+          "type": "color",
+          "label": "Call to action farve",
+          "id": "ctaColor4",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ]
+}
+
+{% endschema %}

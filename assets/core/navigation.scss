@@ -1,0 +1,297 @@
+/* Navbar */
+nav {
+  font-family: Futura,sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  justify-content: center !important;
+  z-index: 500;
+  padding: 8px;
+  background: $base-light-gray;
+
+  .menu-desktop {
+    display: none !important;
+  }
+
+  /* Navbar logo container */
+  /* Resets for better mobile view */
+  .navbar-brand {
+    padding: 0;
+    font-size: initial;
+    margin: 0;
+
+    /* Navbar logo */
+    /* Resets padding and changes logo width */
+    svg {
+      width: 110px;
+      padding: 0;
+    }
+  }
+
+  /* Navbar toggle button for mobile */
+  .navbar-toggler {
+    color: $base-font-color !important;
+    border: 0 !important;
+    padding: .25rem .75rem 0 .75rem;
+
+    /* Navbar toggle button for mobile icon */
+    i {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* The link tag in the nav-item */
+  .nav-link {
+    color: $base-font-color !important;
+    margin: 0 4px;
+    font-size: 13.44px !important;
+
+    /* Removes blue outline on mobile */
+    &:focus {
+      outline: none;
+    }
+  }
+
+  /* The item in the dropdown megamenu */
+  .dropdown-item {
+    color: $base-font-color !important;
+    padding: 0;
+  }
+
+  /* Cart icon container */
+  .cart-icon {
+    padding: .4rem .75rem;
+    font-size: 1.4em;
+    color: black;
+  }
+
+  /* Megamenu style */
+  .megamenu {
+    position: static;
+
+    /* Megamenu style */
+    .dropdown-menu {
+      border: none;
+      width: 100%;
+      background: $base-light-gray none;
+    }
+  }
+
+  /* Support class for controlling space between logo, links and cart from the grey line */
+  .padding-nav-bottom {
+    padding-bottom: 0;
+  }
+
+  .dropdown-menu {
+    .col {
+      div {
+        text-align: center;
+        font-size: .9em;
+        line-height: 1.4;
+
+        img {
+          margin: 15px 0 0 0;
+          width: 60%;
+        }
+        p {
+          margin: 15px 0;
+          opacity: .5;
+        }
+      }
+      a {
+        &:focus {
+          background: none;
+        }
+      }
+    }
+  }
+
+  $gutter: 10px;
+
+  .app {
+    padding: $gutter 0;
+    display: grid;
+    grid-gap: $gutter 0;
+    grid-template-columns: $gutter 1fr $gutter;
+    align-content: start;
+    width: 100%;
+    overflow-y: scroll;
+    & > * {
+      grid-column: 2 / -2;
+    }
+    & > .full {
+      grid-column: 1 / -1;
+    }
+
+    .hs {
+      display: grid;
+      grid-gap: calc(#{$gutter} / 2);
+      grid-template-columns: 10px;
+      grid-template-rows: minmax(150px, 1fr);
+      grid-auto-flow: column;
+      grid-auto-columns: calc(50% - #{$gutter} * 2);
+
+      overflow-x: scroll;
+      scroll-snap-type: x proximity;
+      padding-bottom: calc(.75 * #{$gutter});
+      margin-bottom: calc(-.25 * #{$gutter});
+      &:before,
+      &:after {
+        content: '';
+        width: 10px;
+      }
+    }
+    & > li,
+    .item {
+      scroll-snap-align: center;
+      padding: calc(#{$gutter} / 2 * 1.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      border-radius: 8px;
+    }
+    .no-scrollbar {
+      scrollbar-width: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    li {
+      text-align: center;
+      img {
+        width: 125px;
+        margin: 0 auto;
+      }
+      p {
+        color: $base-font-color;
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+/* Media query for desktop and over with logic for hover links */
+@mixin navigation-over-lg {
+  nav {
+    padding-top: 35px !important;
+    padding-bottom: 0 !important;
+    background: rgba(235, 235, 235, 1);
+    border-bottom-width: 0;
+
+    .menu-mobile {
+      display: none;
+    }
+
+    .menu-desktop {
+      display: flex !important;
+    }
+
+    &:hover {
+      background: rgba(235, 235, 235, 1) !important;
+    }
+
+    /* Wrapper div for navbar content */
+    .container-fluid {
+      max-width: 1180px;
+    }
+
+    /* Support class for controlling space between logo, links and cart from the grey line */
+    .padding-nav-bottom {
+      padding-bottom: 10px !important;
+    }
+
+    .nav-item {
+      .dropdown-menu {
+        display: none;
+        margin-top: 0;
+      }
+      &:hover {
+        .nav-link {
+          color: $base-font-color;
+        }
+        .dropdown-menu {
+          display: block;
+        }
+      }
+    }
+
+    /* An item (link) in the navbar */
+    .nav-item {
+      cursor: pointer;
+    }
+
+    /* Navbar logo container */
+    .navbar-brand {
+
+      /* Navbar logo */
+      svg {
+        padding-bottom: 10px;
+        width: 150px;
+      }
+    }
+
+    .cart-icon {
+      font-size: 1.2em;
+    }
+
+    .bi-search {
+      font-size: 1em;
+    }
+
+    /* Megamenu dropdown item style */
+    .dropdown-menu {
+      .col {
+        div {
+          img {
+            -webkit-transition: 0.15s transform ease-in-out;
+            -moz-transition: 0.15s transform ease-in-out;
+            -ms-transition: 0.15s transform ease-in-out;
+            -o-transition: 0.15s transform ease-in-out;
+            transition: 0.15s transform ease-in-out;
+          }
+          p {
+            -webkit-transition: 0.2s opacity ease-in-out;
+            -moz-transition: 0.2s opacity ease-in-out;
+            -ms-transition: 0.2s opacity ease-in-out;
+            -o-transition: 0.2s opacity ease-in-out;
+            transition: 0.2s opacity ease-in-out;
+          }
+          &:hover {
+            img {
+              transform: translateY(-5px);
+            }
+            p {
+              opacity: 1;
+            }
+          }
+        }
+        a {
+          &:hover {
+            background: none;
+          }
+        }
+      }
+    }
+  }
+
+  /* Wrapper div for navbar content */
+  .shadow-overlay {
+    z-index: 250;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0.75;
+    background: black;
+    position: fixed;
+    display: none;
+  }
+}
+
+/* Set opacity of shadow overlay to 0 to removes it */
+.shadow-overlay {
+  opacity: 0;
+}

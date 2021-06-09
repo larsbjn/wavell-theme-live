@@ -1,0 +1,29 @@
+<button type="button" class="btn arBtn d-none d-lg-block" data-toggle="modal" data-target="#arModal">
+  Se i 3D
+</button>
+<button type="button" class="btn arBtn d-lg-none" data-toggle="modal" data-target="#arModal">
+  Se i 3D & AR
+</button>
+<!-- Modal -->
+<div class="modal fade" id="arModal" tabindex="-1" role="dialog" aria-labelledby="arModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="arModalLabel">{{ name }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <model-viewer src="{{ ar | append: ".glb" | asset_url }}" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto"
+                      camera-controls alt="A 3D model"
+                      skybox-image=""
+                      ios-src="{{ ar | append: ".usdz" | asset_url }}">
+          <button slot="ar-button" style="background-color: white; border-radius: 4px; border: 1px solid #1f283a; position: absolute; top: 16px; right: 16px; ">
+            👋 Activate AR
+          </button>
+        </model-viewer>
+      </div>
+    </div>
+  </div>
+</div>
