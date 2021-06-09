@@ -90,6 +90,22 @@ hr {
   border-radius: 20px;
 }
 
+.floating-buy-btn {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  z-index: 9999;
+}
+.floating-buy-btn a {
+  background-color: #F92954;
+  border-color: #F92954;
+}
+.floating-buy-btn a:hover {
+  color: white;
+  background-color: #d02246;
+  border-color: #d02246;
+}
+
 .card-container {
   padding: 0 15px;
 }
@@ -118,6 +134,10 @@ hr {
 }
 .card-container .card .card-text {
   text-align: center;
+}
+.card-container .card .card-text .text {
+  width: 80%;
+  margin: 30px auto;
 }
 .card-container .blue-card {
   background: #AED6EA;
@@ -1027,6 +1047,10 @@ footer .legal-information a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  .card-container .card .card-text .card-text-center .text {
+    width: 100%;
+    margin: 0;
   }
   .card-container .blue-card {
     background: #AED6EA;

@@ -86,4 +86,6 @@ $(document).ready(function() {
 $('.dropdown-btn').click(function () {
   $('i', this).toggleClass('bi-chevron-down').toggleClass('bi-chevron-up');
 });
-
+$('.floating-buy-btn a').click(function () {
+  $(this).hide();
+});

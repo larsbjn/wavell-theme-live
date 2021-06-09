@@ -53,6 +53,22 @@ hr {
   border-radius: 20px;
 }
 
+.floating-buy-btn {
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+  z-index: 9999;
+  a {
+    background-color: $accent-color;
+    border-color: $accent-color;
+    &:hover {
+      color: white;
+      background-color: $accent-color-hover;
+      border-color: $accent-color-hover;
+    }
+  }
+}
+
 .card-container {
   padding: 0 15px;
   h4 {
@@ -79,6 +95,10 @@ hr {
     }
     .card-text {
       text-align: center;
+      .text {
+        width: 80%;
+        margin: 30px auto;
+      }
     }
   }
   .blue-card {
@@ -492,6 +512,10 @@ hr {
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
+          .text {
+            width: 100%;
+            margin: 0;
+          }
         }
       }
     }

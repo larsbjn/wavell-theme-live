@@ -4,13 +4,15 @@
       {% if rightStyle %}
         <div class="col-12 col-lg-6 card-text">
           <div class="card-text-center">
-            <div class="text-left">
-              <h1>{{ title }}</h1>
-              {{ description }}
+            <div class="text">
+              <div class="text-left">
+                <h1>{{ title }}</h1>
+                {{ description }}
+              </div>
+              {% if ctaLink %}
+                <a class="action-btn" href="{{ ctaLink }}">{{ ctaText }}</a>
+              {% endif %}
             </div>
-            {% if ctaLink %}
-              <a class="action-btn" href="{{ ctaLink }}">{{ ctaText }}</a>
-            {% endif %}
           </div>
         </div>
         <div class="col-12 col-lg-6 card-img right">
@@ -22,13 +24,15 @@
         </div>
         <div class="col-12 col-lg-6 card-text right">
           <div class="card-text-center">
-            <div class="text-left">
-              <h1>{{ title }}</h1>
-              {{ description }}
+            <div class="text">
+              <div class="text-left">
+                <h1>{{ title }}</h1>
+                {{ description }}
+              </div>
+              {% if ctaLink %}
+                <a class="action-btn" href="{{ ctaLink }}">{{ ctaText }}</a>
+              {% endif %}
             </div>
-            {% if ctaLink %}
-              <a class="action-btn" href="{{ ctaLink }}">{{ ctaText }}</a>
-            {% endif %}
           </div>
         </div>
       {% endif %}
@@ -53,6 +57,26 @@
       #card{{ id }} {
         background: {{ gradientBackground }}%;
       }
+    {% endif %}
+    {% if rightStyle and paddingRight == 0 %}
+      #card{{ id }} img {
+        border-radius: 0 0 20px 20px;
+      }
+      @media all and (min-width: 992px) {
+          #card{{ id }} img {
+            border-radius: 0 20px 20px 0;
+          }
+      }
+    {% endif %}
+    {% if rightStyle != true and paddingLeft == 0 %}
+    #card{{ id }} img {
+        border-radius: 20px 20px 0 0;
+    }
+    @media all and (min-width: 992px) {
+        #card{{ id }} img {
+            border-radius: 20px 0 0 20px;
+        }
+    }
     {% endif %}
   </style>
 </div>

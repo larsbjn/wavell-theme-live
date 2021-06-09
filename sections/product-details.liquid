@@ -1,5 +1,8 @@
 {% assign current_variant = product.selected_or_first_available_variant %}
 {% assign featured_image = current_variant.featured_image | default: product.featured_image %}
+<div class="floating-buy-btn">
+  <a href="#product-details" class="action-btn">Køb nu</a>
+</div>
 <div class="container">
   <a class="anchor" id="product-details"></a>
     <div class="row">
