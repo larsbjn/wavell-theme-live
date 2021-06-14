@@ -18,10 +18,14 @@
           </div>
         {% endfor %}
 
-        {% if paginate.pages > 1 %}
-          {{ paginate | default_pagination }}
-        {% endif %}
 
+      </div>
+      <div class="row">
+        <div class="col pagination">
+          {% if paginate.pages > 1 %}
+            {{ paginate | default_pagination: next: 'Næste', previous: 'Forrige' }}
+          {% endif %}
+        </div>
       </div>
     {% endpaginate %}
   </div>
