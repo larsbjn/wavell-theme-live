@@ -42,9 +42,6 @@
   {% if section.settings.backgroundImageDesktop and section.settings.backgroundImageMobile  %}
     #top-banner {
         background-image: url("{{ section.settings.backgroundImageMobile | img_url: 'master' }}");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
     }
     @media all and (min-width: 992px) {
         #top-banner {

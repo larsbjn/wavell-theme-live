@@ -42,13 +42,13 @@
                               {% if childlink.object.featured_image != null %}
                                 <img src="{{ childlink.object.featured_image | img_url: '256x' }}" />
                               {% elsif childlink.title == "Historie" %}
-                                <img src="{{ "brand.jpeg" | asset_img_url: '256x' }}" />
+                                <img src="{{ "historie.png" | asset_img_url: '256x' }}" />
                               {% elsif childlink.title == "Blog" %}
-                                <img src="{{ "blueproject.jpeg" | asset_img_url: '256x256' }}" />
+                                <img src="{{ "blog.png" | asset_img_url: '256x256' }}" />
                               {% elsif childlink.title == "Wavell BLUE Project" %}
-                                <img src="{{ "blueproject.jpeg" | asset_img_url: '256x256' }}" />
+                                <img src="{{ "blue.png" | asset_img_url: '256x256' }}" />
                               {% elsif childlink.title == "Set på" %}
-                                <img src="{{ "blueproject.jpeg" | asset_img_url: '256x256' }}" />
+                                <img src="{{ "setpaa.png" | asset_img_url: '256x256' }}" />
                               {% endif %}
                                 <p>{{ childlink.title | escape }}</p>
                             </div>

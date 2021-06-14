@@ -459,6 +459,11 @@ hr {
   padding: 20px 0;
   text-align: center;
 }
+.contact h6 {
+  width: 100%;
+  margin-top: 15px;
+  text-align: center;
+}
 .contact form {
   width: 100%;
 }
