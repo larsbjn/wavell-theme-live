@@ -11,7 +11,7 @@ $(document).ready(function() {
   if (individualVariantImages) {
     const id = $('#productSelect').find(':selected').data('title');
     if (id !== undefined) {
-      $('.product-image-slider').slick('slickUnfilter').slick('slickFilter','.'+ id);
+      $('.product-image-slider').slick('slickUnfilter').slick('slickFilter','div[data-alt="'+ id + '"]');
     }
   }
   //$('.product-image-slider').fadeTo("slow", 1);

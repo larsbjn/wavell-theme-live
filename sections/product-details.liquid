@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-12 col-lg-10 product-image-slider product-image-slider">
                         {% for image in product.images %}
-                            <div class="{{ image.alt | escape }}">
+                            <div data-alt="{{ image.alt | escape }}">
                                 <img src="{{ image.src | img_url: 'large' }}" alt="{{ image.alt | escape }}">
                             </div>
                         {% endfor %}
