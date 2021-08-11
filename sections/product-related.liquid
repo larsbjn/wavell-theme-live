@@ -14,7 +14,7 @@
         </div>
       </div>
       <div class="row">
-        {% if block.settings.product-1.handle != '' %}
+        {% if block.settings.product-1.handle %}
           <div class="col product-related">
             <a href="{{ block.settings.product-1.url }}">
               <img src="{{ block.settings.product-1.featured_image.src | img_url: 'medium' }}" alt="{{ block.settings.product-1.featured_image.alt }}">
@@ -26,7 +26,7 @@
             </a>
           </div>
         {% endif %}
-        {% if block.settings.product-2.handle != '' %}
+        {% if block.settings.product-2.handle %}
           <div class="col product-related">
             <a href="{{ block.settings.product-2.url }}">
               <img src="{{ block.settings.product-2.featured_image.src | img_url: 'medium' }}" alt="{{ block.settings.product-2.featured_image.alt }}">
@@ -38,7 +38,7 @@
             </a>
           </div>
         {% endif %}
-        {% if block.settings.product-3.handle != '' %}
+        {% if block.settings.product-3.handle %}
           <div class="col product-related">
             <a href="{{ block.settings.product-3.url }}">
               <img src="{{ block.settings.product-3.featured_image.src | img_url: 'medium' }}" alt="{{ block.settings.product-3.featured_image.alt }}">
@@ -50,7 +50,7 @@
             </a>
           </div>
         {% endif %}
-        {% if block.settings.product-4.handle != '' %}
+        {% if block.settings.product-4.handle %}
           <div class="col product-related">
             <a href="{{ block.settings.product-4.url }}">
               <img src="{{ block.settings.product-4.featured_image.src | img_url: 'medium' }}" alt="{{ block.settings.product-4.featured_image.alt }}">
