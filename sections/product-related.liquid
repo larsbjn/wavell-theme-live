@@ -1,0 +1,126 @@
+{% for block in section.blocks %}
+  {% if block.settings.product-handle == product.handle %}
+    <div class="container product-related-container">
+      <div class="row">
+        <div class="col-12">
+          <h4></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h4>
+            {{ block.settings.related-title }}
+          </h4>
+        </div>
+      </div>
+      <div class="row">
+        {% if block.settings.product-1.handle != '' %}
+          <div class="col product-related">
+            <a href="{{ block.settings.product-1.url }}">
+              <img src="{{ block.settings.product-1.featured_image.src | img_url: 'medium' }}" alt="{{ block.settings.product-1.featured_image.alt }}">
+              <h4>{{ block.settings.product-1.title }}</h4>
+              <span {% if block.settings.product-1.compare_at_price %} class="discounted" {% endif %}>
+                  {{ block.settings.product-1.price | money }}
+              </span>
+              <s>{{ block.settings.product-1.compare_at_price | money }}</s>
+            </a>
+          </div>
+        {% endif %}
+        {% if block.settings.product-2.handle != '' %}
+          <div class="col product-related">
+            <a href="{{ block.settings.product-2.url }}">
+              <img src="{{ block.settings.product-2.featured_image.src | img_url: 'medium' }}" alt="{{ block.settings.product-2.featured_image.alt }}">
+              <h4>{{ block.settings.product-2.title }}</h4>
+              <span {% if block.settings.product-2.compare_at_price %} class="discounted" {% endif %}>
+                  {{ block.settings.product-2.price | money }}
+              </span>
+              <s>{{ block.settings.product-2.compare_at_price | money }}</s>
+            </a>
+          </div>
+        {% endif %}
+        {% if block.settings.product-3.handle != '' %}
+          <div class="col product-related">
+            <a href="{{ block.settings.product-3.url }}">
+              <img src="{{ block.settings.product-3.featured_image.src | img_url: 'medium' }}" alt="{{ block.settings.product-3.featured_image.alt }}">
+              <h4>{{ block.settings.product-3.title }}</h4>
+              <span {% if block.settings.product-3.compare_at_price %} class="discounted" {% endif %}>
+                  {{ block.settings.product-3.price | money }}
+              </span>
+              <s>{{ block.settings.product-3.compare_at_price | money }}</s>
+            </a>
+          </div>
+        {% endif %}
+        {% if block.settings.product-4.handle != '' %}
+          <div class="col product-related">
+            <a href="{{ block.settings.product-4.url }}">
+              <img src="{{ block.settings.product-4.featured_image.src | img_url: 'medium' }}" alt="{{ block.settings.product-4.featured_image.alt }}">
+              <h4>{{ block.settings.product-4.title }}</h4>
+              <span {% if block.settings.product-4.compare_at_price %} class="discounted" {% endif %}>
+                  {{ block.settings.product-4.price | money }}
+              </span>
+              <s>{{ block.settings.product-4.compare_at_price | money }}</s>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+{% schema %}
+{
+  "name": "Related products",
+  "settings": [
+    {
+    "type": "header",
+    "content": "Tilføj en blok for hvert produkt"
+    }
+  ],
+  "blocks": [
+        {
+          "type": "text",
+          "name": "Product page",
+          "settings": [
+        {
+          "type": "paragraph",
+          "content": "Vælg produktet herunder, dette bestemmer hvilket produkt content skal vises på."
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-handle"
+        },
+        {
+          "type": "header",
+          "content": "Relateret produkter"
+        },
+        {
+          "type": "text",
+          "label": "Indtast overskrift til relateret produkter",
+          "id": "related-title",
+          "default": "Relaterede produkter"
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-1"
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-2"
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-3"
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product-4"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

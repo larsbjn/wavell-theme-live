@@ -191,6 +191,18 @@
       text-align: left;
     }
   }
+
+  .product-related-container {
+    .product-related {
+      text-align: center;
+      * {
+        color: $base-font-color;
+      }
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
 }
 
 @media all and (min-width: 992px) {

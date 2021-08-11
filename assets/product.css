@@ -169,6 +169,15 @@
 .product .facts .accordion {
   text-align: left;
 }
+.product .product-related-container .product-related {
+  text-align: center;
+}
+.product .product-related-container .product-related * {
+  color: #032B43;
+}
+.product .product-related-container .product-related span {
+  font-size: 1rem;
+}
 
 @media all and (min-width: 992px) {
   .product > div:not(:first-child), .product #shopify-section-card .card-container {
